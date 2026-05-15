@@ -1160,8 +1160,8 @@ export default function App() {
   const wordCount = inputText.trim() ? inputText.trim().split(/\s+/).length : 0;
 
   return (
-    <div className="bg-gray-100 dark:bg-black w-full min-h-[100dvh] flex items-center justify-center">
-      <div id="app-root" className="flex bg-[var(--bg-main)] text-[var(--text-secondary)] w-full h-[100dvh] sm:max-w-[412px] sm:h-[90dvh] sm:rounded-[36px] sm:shadow-2xl sm:border-[8px] sm:border-gray-800 dark:sm:border-gray-700 overflow-hidden relative font-sans pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+    <div className="bg-[var(--bg-main)] w-full min-h-[100dvh] flex items-center justify-center">
+      <div id="app-root" className="flex bg-[var(--bg-main)] text-[var(--text-secondary)] w-full h-[100dvh] overflow-hidden relative font-sans pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
       
       {/* Drawer Overlay */}
       {isDrawerOpen && <div id="drawer-overlay" className="fixed inset-0 bg-black/40 z-40 transition-opacity duration-200" onClick={() => setIsDrawerOpen(false)} />}
