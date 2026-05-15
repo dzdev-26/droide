@@ -31,7 +31,6 @@ jobs:
       - name: Setup Capacitor & Android Platform
         run: |
           npm install @capacitor/core @capacitor/cli @capacitor/android
-          npx cap init "Droide" "com.droide.app" --web-dir dist
           npx cap add android
           npx cap copy android
 
