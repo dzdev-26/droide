@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install Dependencies
         run: npm install
@@ -30,6 +30,8 @@ jobs:
 
       - name: Setup Capacitor & Android Platform
         run: |
+          npm install @capacitor/core @capacitor/cli @capacitor/android
+          npx cap init "Droide" "com.droide.app" --web-dir dist
           npx cap add android
           npx cap copy android
 
