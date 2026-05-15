@@ -1160,8 +1160,8 @@ export default function App() {
   const wordCount = inputText.trim() ? inputText.trim().split(/\s+/).length : 0;
 
   return (
-    <div className="bg-[var(--bg-main)] w-full min-h-[100dvh] flex items-center justify-center">
-      <div id="app-root" className="flex bg-[var(--bg-main)] text-[var(--text-secondary)] w-full h-[100dvh] overflow-hidden relative font-sans">
+    <div className="bg-[var(--bg-main)] w-full h-full flex items-center justify-center">
+      <div id="app-root" className="flex bg-[var(--bg-main)] text-[var(--text-secondary)] w-full h-full overflow-hidden relative font-sans">
       
       {/* Drawer Overlay */}
       {isDrawerOpen && <div id="drawer-overlay" className="fixed inset-0 bg-black/40 z-40 transition-opacity duration-200" onClick={() => setIsDrawerOpen(false)} />}
@@ -1177,7 +1177,7 @@ export default function App() {
       {isSkillsMenuOpen && <SkillsMenu settings={settings} setSettings={setSettings} onClose={() => setIsSkillsMenuOpen(false)} vibrate={vibrate} showToast={showToast} />}
 
       {/* Feature 2: Native Android Drawer */}
-      <div id="side-drawer" className={`fixed inset-y-0 left-0 w-full sm:w-[85%] max-w-full sm:max-w-[320px] bg-[var(--bg-drawer)] shadow-2xl z-[60] transform transition-transform duration-200 flex flex-col pt-[max(env(safe-area-inset-top),32px)] pb-[max(env(safe-area-inset-bottom),16px)] ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div id="side-drawer" className={`absolute inset-y-0 left-0 w-[85%] max-w-[320px] bg-[var(--bg-drawer)] shadow-2xl z-[60] transform transition-transform duration-300 flex flex-col pt-[max(env(safe-area-inset-top),32px)] pb-[max(env(safe-area-inset-bottom),16px)] ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="p-4 pb-3 border-b border-[var(--border-drawer)] flex justify-between items-center relative z-10">
           <div className="flex items-center gap-2">
              <BrandLogo className="w-10 h-10 text-[var(--logo-color)]" />
