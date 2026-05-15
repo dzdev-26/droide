@@ -1160,15 +1160,14 @@ export default function App() {
   const wordCount = inputText.trim() ? inputText.trim().split(/\s+/).length : 0;
 
   return (
-    <div className="bg-[var(--bg-main)] w-full h-full flex items-center justify-center">
-      <div id="app-root" className="flex bg-[var(--bg-main)] text-[var(--text-secondary)] w-full h-full overflow-hidden relative font-sans">
+    <div className="fixed inset-0 bg-[var(--bg-main)] text-[var(--text-secondary)] font-sans overflow-hidden flex flex-col w-full h-full">
       
       {/* Drawer Overlay */}
-      {isDrawerOpen && <div id="drawer-overlay" className="fixed inset-0 bg-black/40 z-40 transition-opacity duration-200" onClick={() => setIsDrawerOpen(false)} />}
+      {isDrawerOpen && <div id="drawer-overlay" className="fixed inset-0 bg-black/40 z-[100] transition-opacity duration-250 ease-out" onClick={() => setIsDrawerOpen(false)} />}
       
       {/* Toast Notification */}
       {toastMessage && (
-        <div id="toast-notification" className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-[var(--text-secondary)] text-[var(--bg-main)] px-4 py-2 rounded-full text-sm font-medium shadow-lg animate-in fade-in duration-150">
+        <div id="toast-notification" className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] bg-[var(--text-secondary)] text-[var(--bg-main)] px-4 py-2 rounded-full text-sm font-medium shadow-lg animate-in fade-in duration-150">
           {toastMessage}
         </div>
       )}
@@ -1177,7 +1176,7 @@ export default function App() {
       {isSkillsMenuOpen && <SkillsMenu settings={settings} setSettings={setSettings} onClose={() => setIsSkillsMenuOpen(false)} vibrate={vibrate} showToast={showToast} />}
 
       {/* Feature 2: Native Android Drawer */}
-      <div id="side-drawer" className={`absolute inset-y-0 left-0 w-[85%] max-w-[320px] bg-[var(--bg-drawer)] shadow-2xl z-[60] transform transition-transform duration-300 flex flex-col pt-[max(env(safe-area-inset-top),32px)] pb-[max(env(safe-area-inset-bottom),16px)] ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div id="side-drawer" className={`fixed inset-y-0 left-0 w-[85vw] max-w-[320px] bg-[var(--bg-drawer)] shadow-2xl z-[120] transform transition-transform duration-300 ease-out flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="p-4 pb-3 border-b border-[var(--border-drawer)] flex justify-between items-center relative z-10">
           <div className="flex items-center gap-2">
              <BrandLogo className="w-10 h-10 text-[var(--logo-color)]" />
@@ -1853,7 +1852,7 @@ export default function App() {
       />
 
       {/* Main App */}
-      <div id="main-content" className="flex-1 flex flex-col h-full w-full relative z-10 pt-[max(env(safe-area-inset-top),16px)] pb-[max(env(safe-area-inset-bottom),16px)]">
+      <div id="main-content" className="flex-1 flex flex-col w-full h-full relative z-10 pt-[max(env(safe-area-inset-top),4px)] pb-[max(env(safe-area-inset-bottom),4px)] overflow-hidden">
         <ChatHeader 
           onMenuClick={() => { setIsDrawerOpen(true); vibrate(); }}
           onModelSelectorClick={() => { setIsModelSelectorOpen(true); vibrate(); }}
@@ -2222,7 +2221,6 @@ export default function App() {
           vibrate();
         }} 
       />
-    </div>
     </div>
   );
 }
