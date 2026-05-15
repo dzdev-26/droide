@@ -135,7 +135,7 @@ export const PromptLibraryModal: React.FC<PromptLibraryModalProps> = ({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="relative z-10 bg-[var(--bg-main)] w-full sm:max-w-xl sm:rounded-3xl h-[85vh] sm:h-[80vh] flex flex-col shadow-2xl overflow-hidden rounded-t-[32px] sm:rounded-t-3xl"
+        className="relative z-10 bg-[var(--bg-main)] w-full sm:max-w-xl sm:rounded-3xl h-[85vh] sm:h-[80vh] flex flex-col shadow-2xl overflow-hidden rounded-t-[32px] sm:rounded-t-3xl pb-[max(env(safe-area-inset-bottom),16px)]"
       >
         <div className="p-5 pb-0 flex flex-col z-10 relative bg-[var(--bg-main)]">
           <div className="flex justify-between items-center mb-4">

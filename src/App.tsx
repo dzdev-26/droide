@@ -1161,7 +1161,7 @@ export default function App() {
 
   return (
     <div className="bg-[var(--bg-main)] w-full min-h-[100dvh] flex items-center justify-center">
-      <div id="app-root" className="flex bg-[var(--bg-main)] text-[var(--text-secondary)] w-full h-[100dvh] overflow-hidden relative font-sans pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+      <div id="app-root" className="flex bg-[var(--bg-main)] text-[var(--text-secondary)] w-full h-[100dvh] overflow-hidden relative font-sans">
       
       {/* Drawer Overlay */}
       {isDrawerOpen && <div id="drawer-overlay" className="fixed inset-0 bg-black/40 z-40 transition-opacity duration-200" onClick={() => setIsDrawerOpen(false)} />}
@@ -1177,12 +1177,15 @@ export default function App() {
       {isSkillsMenuOpen && <SkillsMenu settings={settings} setSettings={setSettings} onClose={() => setIsSkillsMenuOpen(false)} vibrate={vibrate} showToast={showToast} />}
 
       {/* Feature 2: Native Android Drawer */}
-      <div id="side-drawer" className={`fixed inset-y-0 left-0 w-[85%] max-w-[320px] bg-[var(--bg-drawer)] shadow-2xl z-50 transform transition-transform duration-200 flex flex-col ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="p-4 pb-3 border-b border-[var(--border-drawer)] flex justify-between items-center">
+      <div id="side-drawer" className={`fixed inset-y-0 left-0 w-full sm:w-[85%] max-w-full sm:max-w-[320px] bg-[var(--bg-drawer)] shadow-2xl z-[60] transform transition-transform duration-200 flex flex-col pt-[max(env(safe-area-inset-top),32px)] pb-[max(env(safe-area-inset-bottom),16px)] ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="p-4 pb-3 border-b border-[var(--border-drawer)] flex justify-between items-center relative z-10">
           <div className="flex items-center gap-2">
              <BrandLogo className="w-10 h-10 text-[var(--logo-color)]" />
              <h2 className="font-serif text-2xl font-medium tracking-tight bg-gradient-to-r from-[var(--accent)] to-orange-400 bg-clip-text text-transparent">DROIDE</h2>
           </div>
+          <button onClick={() => { setIsDrawerOpen(false); vibrate(); }} className="p-2 -mr-2 hover:bg-[var(--surface-hover)] rounded-full transition-colors sm:hidden active:scale-95">
+             <X className="w-6 h-6 text-[var(--text-primary)]" />
+          </button>
         </div>
         
         <div className="flex-1 overflow-y-auto pt-2 px-3 no-scrollbar space-y-3">
@@ -1505,7 +1508,7 @@ export default function App() {
 
       {/* AI Config Full Screen */}
       {isAiConfigOpen && (
-        <div className="fixed inset-0 bg-[var(--bg-main)] z-[120] flex flex-col pt-2 animate-in fade-in duration-200">
+        <div className="fixed inset-0 bg-[var(--bg-main)] z-[120] flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] animate-in fade-in duration-200">
           <div className="flex items-center justify-between p-5 pb-4">
             <div className="flex items-center gap-1">
               <button 
@@ -1615,7 +1618,7 @@ export default function App() {
         </div>
       )}
       {isApiConfigOpen && (
-        <div className="fixed inset-0 bg-[var(--bg-main)] z-[120] flex flex-col pt-2 animate-in fade-in duration-200">
+        <div className="fixed inset-0 bg-[var(--bg-main)] z-[120] flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] animate-in fade-in duration-200">
           <div className="flex items-center justify-between p-5 pb-4">
             <div className="flex items-center gap-1">
               <button onClick={() => { setIsApiConfigOpen(false); setEditingProviderId(null); }} className="text-[var(--text-muted)] hover:text-[var(--text-primary)] mr-2 p-1">
@@ -1718,7 +1721,7 @@ export default function App() {
       )}
 
       {isCustomModelsOpen && (
-        <div className="fixed inset-0 bg-[var(--bg-main)] z-[120] flex flex-col pt-2 animate-in fade-in duration-200">
+        <div className="fixed inset-0 bg-[var(--bg-main)] z-[120] flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] animate-in fade-in duration-200">
           <div className="flex items-center justify-between p-5 pb-4">
             <div className="flex items-center gap-1">
               <button onClick={() => { setIsCustomModelsOpen(false); setEditingModelId(null); }} className="text-[var(--text-muted)] hover:text-[var(--text-primary)] mr-2 p-1">
@@ -1850,7 +1853,7 @@ export default function App() {
       />
 
       {/* Main App */}
-      <div id="main-content" className="flex-1 flex flex-col h-full absolute inset-0 z-10">
+      <div id="main-content" className="flex-1 flex flex-col h-full w-full relative z-10 pt-[max(env(safe-area-inset-top),16px)] pb-[max(env(safe-area-inset-bottom),16px)]">
         <ChatHeader 
           onMenuClick={() => { setIsDrawerOpen(true); vibrate(); }}
           onModelSelectorClick={() => { setIsModelSelectorOpen(true); vibrate(); }}
