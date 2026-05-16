@@ -37,14 +37,14 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/40 z-[60]"
+            className="fixed inset-0 bg-black/40 z-[140]"
           />
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed top-14 left-1/2 -translate-x-1/2 w-[92%] max-w-sm bg-[var(--bg-main)] rounded-3xl shadow-2xl z-[70] overflow-hidden flex flex-col max-h-[75vh] border border-[var(--border-drawer)]"
+            className="fixed top-14 left-1/2 -translate-x-1/2 w-[92%] max-w-sm bg-[var(--bg-main)] rounded-3xl shadow-2xl z-[150] overflow-hidden flex flex-col max-h-[80%] border border-[var(--border-drawer)]"
           >
             <div className="p-5 bg-[var(--bg-main)] border-b border-[var(--border-drawer)] flex items-center justify-between sticky top-0 z-10">
               <h3 className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider">Select Model</h3>

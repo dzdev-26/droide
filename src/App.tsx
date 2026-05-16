@@ -1167,7 +1167,7 @@ export default function App() {
       
       {/* Toast Notification */}
       {toastMessage && (
-        <div id="toast-notification" className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] bg-[var(--text-secondary)] text-[var(--bg-main)] px-4 py-2 rounded-full text-sm font-medium shadow-lg animate-in fade-in duration-150">
+        <div id="toast-notification" className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[300] bg-[var(--text-secondary)] text-[var(--bg-main)] px-4 py-2 rounded-full text-sm font-medium shadow-lg animate-in fade-in duration-150">
           {toastMessage}
         </div>
       )}
@@ -1419,7 +1419,7 @@ export default function App() {
 
       {/* Memory Management Modal */}
       {isManageMemoriesOpen && (
-        <div className="fixed inset-0 bg-black/60 z-[120] flex items-center justify-center p-4 backdrop-blur-sm">
+        <div className="fixed inset-0 bg-black/60 z-[150] flex items-center justify-center p-4 backdrop-blur-sm">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -1429,7 +1429,7 @@ export default function App() {
               <h3 className="font-bold text-[var(--text-primary)]">Manage Memory</h3>
               <button onClick={() => setIsManageMemoriesOpen(false)}><X className="w-6 h-6 text-[var(--text-muted)]" /></button>
             </div>
-            <div className="p-5 max-h-[60vh] overflow-y-auto space-y-3">
+            <div className="p-5 max-h-[60%] overflow-y-auto space-y-3">
               {settings.userMemories && settings.userMemories.length > 0 ? (
                 settings.userMemories.map((m, idx) => (
                   <div key={idx} className="p-3 bg-[var(--surface-hover)] rounded-xl border border-[var(--surface-border)] text-xs text-[var(--text-secondary)] flex items-start justify-between">
@@ -1472,7 +1472,7 @@ export default function App() {
 
       {/* Shared Chats Modal */}
       {isManageSharedChatsOpen && (
-        <div className="fixed inset-0 bg-black/60 z-[120] flex items-center justify-center p-4 backdrop-blur-sm">
+        <div className="fixed inset-0 bg-black/60 z-[150] flex items-center justify-center p-4 backdrop-blur-sm">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -1507,7 +1507,7 @@ export default function App() {
 
       {/* AI Config Full Screen */}
       {isAiConfigOpen && (
-        <div className="fixed inset-0 bg-[var(--bg-main)] z-[120] flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] animate-in fade-in duration-200">
+        <div className="fixed inset-0 bg-[var(--bg-main)] z-[150] flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] animate-in fade-in duration-200">
           <div className="flex items-center justify-between p-5 pb-4">
             <div className="flex items-center gap-1">
               <button 
@@ -1617,7 +1617,7 @@ export default function App() {
         </div>
       )}
       {isApiConfigOpen && (
-        <div className="fixed inset-0 bg-[var(--bg-main)] z-[120] flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] animate-in fade-in duration-200">
+        <div className="fixed inset-0 bg-[var(--bg-main)] z-[150] flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] animate-in fade-in duration-200">
           <div className="flex items-center justify-between p-5 pb-4">
             <div className="flex items-center gap-1">
               <button onClick={() => { setIsApiConfigOpen(false); setEditingProviderId(null); }} className="text-[var(--text-muted)] hover:text-[var(--text-primary)] mr-2 p-1">
@@ -1720,7 +1720,7 @@ export default function App() {
       )}
 
       {isCustomModelsOpen && (
-        <div className="fixed inset-0 bg-[var(--bg-main)] z-[120] flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] animate-in fade-in duration-200">
+        <div className="fixed inset-0 bg-[var(--bg-main)] z-[150] flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] animate-in fade-in duration-200">
           <div className="flex items-center justify-between p-5 pb-4">
             <div className="flex items-center gap-1">
               <button onClick={() => { setIsCustomModelsOpen(false); setEditingModelId(null); }} className="text-[var(--text-muted)] hover:text-[var(--text-primary)] mr-2 p-1">
@@ -2116,7 +2116,7 @@ export default function App() {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/60 backdrop-blur-md"
+            className="fixed inset-0 z-[150] flex items-center justify-center px-4 bg-black/60 backdrop-blur-md"
           >
             <motion.div 
               initial={{ opacity: 0 }}
@@ -2153,7 +2153,7 @@ export default function App() {
 
       {/* Folder Manager Modal */}
       {isFolderModalOpen && (
-        <div className="fixed inset-0 bg-black/40 z-[100] flex items-center justify-center p-4 backdrop-blur-sm">
+        <div className="fixed inset-0 bg-black/40 z-[150] flex items-center justify-center p-4 backdrop-blur-sm">
           <div className="bg-[var(--bg-main)] rounded-2xl w-full max-w-sm flex flex-col shadow-2xl overflow-hidden animate-in fade-in duration-150">
             <div className="p-6">
               <h3 className="text-xl font-bold mb-1 text-[var(--text-primary)]">{editingFolderId ? 'Edit Folder' : 'New Folder'}</h3>

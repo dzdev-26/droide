@@ -17,7 +17,7 @@ export const ScrollToBottomFAB: React.FC<ScrollToBottomFABProps> = ({ isVisible,
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
           whileTap={{ scale: 0.9 }}
           onClick={onClick}
-          className="fixed bottom-[160px] right-6 w-12 h-12 bg-[var(--surface-variant)] text-[var(--accent)] rounded-full shadow-lg border border-[var(--surface-border)] flex items-center justify-center z-20 outline-none focus:ring-2 focus:ring-[var(--accent)]"
+          className="fixed bottom-24 right-4 w-11 h-11 bg-[var(--surface-variant)] text-[var(--accent)] rounded-full shadow-lg border border-[var(--surface-border)] flex items-center justify-center z-[40] outline-none focus:ring-2 focus:ring-[var(--accent)]"
           aria-label="Scroll to bottom"
         >
           <ChevronDown className="w-6 h-6" />

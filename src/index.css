@@ -85,10 +85,17 @@
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     overscroll-behavior-y: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
 }
 
 @layer utilities {
+  .selectable-text {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

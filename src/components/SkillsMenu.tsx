@@ -162,7 +162,7 @@ export function SkillsMenu({ settings, setSettings, onClose, showToast, vibrate 
   );
 
   return (
-    <div className="fixed inset-0 bg-[var(--bg-main)] z-[120] flex flex-col pt-2 animate-in fade-in duration-200">
+    <div className="fixed inset-0 bg-[var(--bg-main)] z-[150] flex flex-col pt-2 animate-in fade-in duration-200">
       <div className="flex items-center justify-between p-5 pb-4">
         <div className="flex items-center gap-1">
           <button onClick={onClose} className="text-[var(--text-muted)] hover:text-[var(--text-primary)] mr-2 p-1">

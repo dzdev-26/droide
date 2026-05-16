@@ -122,7 +122,7 @@ export const PromptLibraryModal: React.FC<PromptLibraryModalProps> = ({
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4">
+    <div className="fixed inset-0 z-[150] flex items-end sm:items-center justify-center sm:p-4">
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -135,7 +135,7 @@ export const PromptLibraryModal: React.FC<PromptLibraryModalProps> = ({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="relative z-10 bg-[var(--bg-main)] w-full sm:max-w-xl sm:rounded-3xl h-[85vh] sm:h-[80vh] flex flex-col shadow-2xl overflow-hidden rounded-t-[32px] sm:rounded-t-3xl pb-[max(env(safe-area-inset-bottom),16px)]"
+        className="relative z-10 bg-[var(--bg-main)] w-full sm:max-w-xl sm:rounded-3xl h-[85%] sm:h-[80%] flex flex-col shadow-2xl overflow-hidden rounded-t-[32px] sm:rounded-t-3xl pb-[max(env(safe-area-inset-bottom),16px)]"
       >
         <div className="p-5 pb-0 flex flex-col z-10 relative bg-[var(--bg-main)]">
           <div className="flex justify-between items-center mb-4">
