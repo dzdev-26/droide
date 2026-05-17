@@ -1,6 +1,6 @@
 {
-  "name": "Droide AI",
-  "description": "Droide AI v1.1.0-u2 imported project",
+  "name": "",
+  "description": "",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }

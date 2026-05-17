@@ -13,8 +13,9 @@ import { SettingsModal } from './components/modals/SettingsModal';
 import { ModelSelector } from './components/modals/ModelSelector';
 import { PromptLibraryModal } from './components/modals/PromptLibraryModal';
 import { DeleteSessionModal } from './components/modals/DeleteSessionModal';
+import { ProjectWorkspaceModal } from './components/modals/ProjectWorkspaceModal';
 import { ArtifactViewer } from './components/ArtifactViewer';
-import { streamChat, generateTitle, ChatHistoryItem, getModelMetadata, listModels, fetchCustomModelMetadata } from './services/gemini';
+import { streamChat, generateTitle, ChatHistoryItem, fetchCustomModelMetadata } from './services/gemini';
 import { extractArchive } from './lib/archive';
 import { jsPDF } from 'jspdf';
 import { getFileIcon } from './lib/fileIconRegistry';
@@ -24,8 +25,10 @@ import {
   Message, 
   Prompt as SavedPrompt, 
   CustomModel, 
-  ApiProvider 
+  ApiProvider,
+  Project
 } from './types';
+import { dbManager, DroideDBSchema } from './lib/db';
 
 // --- Feature 1: Local Storage Hook for persistent history ---
 function useLocalStorage<T>(key: string, initialValue: T) {
@@ -217,8 +220,7 @@ Before each response, internally verify if your current strategy is still the mo
 const DEFAULT_SETTINGS: AppSettings = {
   theme: 'light',
   systemPrompt: DEFAULT_PROMPT,
-  geminiApiKey: '',
-  selectedModelId: 'gemini-3-flash-preview',
+  selectedModelId: '',
   forceBengali: false,
   streamResponses: true,
   autoTts: false,
@@ -260,34 +262,11 @@ const DEFAULT_SETTINGS: AppSettings = {
   aiRequirements: []
 };
 
-const BUILT_IN_MODELS = [
-  { 
-    id: 'gemini-3.1-pro-preview', 
-    displayName: 'Gemini 3.1 Pro Preview', 
-    providerId: 'google',
-    caps: { vision: true, audio: true, video: true, context: '2M', speed: 'balanced' }
-  },
-  { 
-    id: 'gemini-3-flash-preview', 
-    displayName: 'Gemini 3 Flash Preview', 
-    providerId: 'google',
-    caps: { vision: true, audio: true, video: true, context: '1M', speed: 'ultra' } 
-  },
-  { 
-    id: 'gemini-flash-latest', 
-    displayName: 'Gemini Flash Latest', 
-    providerId: 'google',
-    caps: { vision: true, audio: true, video: true, context: '1M', speed: 'light' }
-  },
-  { 
-    id: 'gemini-3.1-flash-lite', 
-    displayName: 'Gemini Flash-Lite Latest', 
-    providerId: 'google',
-    caps: { vision: true, audio: false, video: false, context: '1M', speed: 'ultra' }
-  }
-];
+const BUILT_IN_MODELS: any[] = [];
 
 export default function App() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [currentProjectId, setCurrentProjectId] = useLocalStorage<string | null>('droide_current_project', null);
   const [sessions, setSessions] = useLocalStorage<Session[]>('droide_sessions', []);
   const [currentSessionId, setCurrentSessionId] = useLocalStorage<string | null>('droide_current_session', null);
   const [settings, setSettings] = useLocalStorage<AppSettings>('droide_settings', DEFAULT_SETTINGS);
@@ -341,7 +320,13 @@ export default function App() {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [folders, setFolders] = useLocalStorage<Folder[]>('droide_folders', []);
   const [isFolderModalOpen, setIsFolderModalOpen] = useState(false);
+  const [isWorkspaceModalOpen, setIsWorkspaceModalOpen] = useState(false);
   const [editingFolderId, setEditingFolderId] = useState<string | null>(null);
+  
+  useEffect(() => {
+    dbManager.getProjects().then(setProjects);
+  }, [isWorkspaceModalOpen]); // Refresh projects whenever modal closes
+
   const [newFolderName, setNewFolderName] = useState('');
   const [savedPrompts, setSavedPrompts] = useLocalStorage<SavedPrompt[]>('droide_saved_prompts', []);
   const [isPromptLibraryOpen, setIsPromptLibraryOpen] = useState(false);
@@ -445,6 +430,10 @@ export default function App() {
   };
 
   const filteredSessions = sessions.filter(s => {
+    // Project isolation
+    const matchesProject = currentProjectId ? s.projectId === currentProjectId : !s.projectId;
+    if (!matchesProject) return false;
+
     if (!searchQuery) return true;
     const q = searchQuery.toLowerCase();
     return s.title.toLowerCase().includes(q) || s.messages.some(m => m.content.toLowerCase().includes(q));
@@ -632,7 +621,15 @@ export default function App() {
     setTimeout(() => inputRef.current?.focus(), 100);
   };
 
-  const currentSession = sessions.find(s => s.id === currentSessionId) || { id: 'default', title: 'New Chat', messages: [], updatedAt: Date.now() };
+  let currentSession = sessions.find(s => s.id === currentSessionId);
+  const belongsToProject = currentProjectId ? currentSession?.projectId === currentProjectId : !currentSession?.projectId;
+  
+  if (currentSession && !belongsToProject) {
+    currentSession = undefined;
+  }
+  if (!currentSession) {
+    currentSession = { id: 'default', projectId: currentProjectId || undefined, title: 'New Chat', messages: [], updatedAt: Date.now() };
+  }
 
   // --- Feature 11: Dark/Light Theme enforcement ---
   useEffect(() => {
@@ -725,38 +722,24 @@ export default function App() {
         if (detectedCaps[model.id] || (model as any).caps) continue;
 
         try {
-          if ((model as any).providerId === 'google' && (settings.geminiApiKey || process.env.GEMINI_API_KEY)) {
-            const meta = await getModelMetadata(model.id, settings.geminiApiKey || process.env.GEMINI_API_KEY as string);
+          const provider = apiProviders.find(p => p.id === (model as any).providerId);
+          if (provider && provider.url && provider.apiKey) {
+            const meta = await fetchCustomModelMetadata(provider.url, provider.apiKey, (model as any).modelId);
             if (meta) {
-              const caps = {
-                vision: meta.description?.toLowerCase().includes('vision') || meta.supportedGenerationMethods?.includes('generateContent'),
-                audio: meta.description?.toLowerCase().includes('audio'),
-                video: meta.description?.toLowerCase().includes('video'),
-                context: meta.inputTokenLimit ? (meta.inputTokenLimit >= 1000000 ? `${meta.inputTokenLimit / 1000000}M` : `${meta.inputTokenLimit / 1000}k`) : '?',
-                speed: meta.description?.toLowerCase().includes('flash') ? 'extreme' : 'balanced'
+              const caps = meta.capabilities ? {
+                vision: meta.capabilities.vision,
+                audio: meta.capabilities.audio,
+                video: meta.capabilities.video,
+                context: meta.context_length ? (meta.context_length >= 1000000 ? `${meta.context_length / 1000000}M` : `${meta.context_length / 1000}k`) : '?',
+                speed: 'balanced'
+              } : {
+                vision: (model as any).modelId.toLowerCase().includes('vision') || (model as any).modelId.toLowerCase().includes('-v'),
+                audio: (model as any).modelId.toLowerCase().includes('audio') || (model as any).modelId.toLowerCase().includes('speech'),
+                video: (model as any).modelId.toLowerCase().includes('video'),
+                context: '?',
+                speed: 'balanced'
               };
               setDetectedCaps(prev => ({ ...prev, [model.id]: caps }));
-            }
-          } else if ((model as any).providerId !== 'google') {
-            const provider = apiProviders.find(p => p.id === (model as any).providerId);
-            if (provider && provider.url && provider.apiKey) {
-              const meta = await fetchCustomModelMetadata(provider.url, provider.apiKey, (model as any).modelId);
-              if (meta) {
-                const caps = meta.capabilities ? {
-                  vision: meta.capabilities.vision,
-                  audio: meta.capabilities.audio,
-                  video: meta.capabilities.video,
-                  context: meta.context_length ? (meta.context_length >= 1000000 ? `${meta.context_length / 1000000}M` : `${meta.context_length / 1000}k`) : '?',
-                  speed: 'balanced'
-                } : {
-                  vision: (model as any).modelId.toLowerCase().includes('vision') || (model as any).modelId.toLowerCase().includes('-v'),
-                  audio: (model as any).modelId.toLowerCase().includes('audio') || (model as any).modelId.toLowerCase().includes('speech'),
-                  video: (model as any).modelId.toLowerCase().includes('video'),
-                  context: '?',
-                  speed: 'balanced'
-                };
-                setDetectedCaps(prev => ({ ...prev, [model.id]: caps }));
-              }
             }
           }
         } catch (e) {
@@ -765,13 +748,13 @@ export default function App() {
       }
     };
     fetchAllCaps();
-  }, [isModelSelectorOpen, settings.geminiApiKey, customModels, apiProviders]);
+  }, [isModelSelectorOpen, customModels, apiProviders]);
 
   const updateSession = (sessionId: string, updater: (s: Session) => Session, skipSort = false) => {
     setSessions(prev => {
       let exist = prev.find(p => p.id === sessionId);
       if (!exist) {
-        exist = { id: sessionId, title: 'New Chat', messages: [], updatedAt: Date.now() };
+        exist = { id: sessionId, projectId: currentProjectId || undefined, title: 'New Chat', messages: [], updatedAt: Date.now() };
         return [updater(exist), ...prev];
       }
       const updated = prev.map(p => p.id === sessionId ? updater(p) : p);
@@ -784,7 +767,7 @@ export default function App() {
       vibrate();
       const newId = crypto.randomUUID();
       setCurrentSessionId(newId);
-      setSessions(prev => [{ id: newId, title: 'New Chat', messages: [], updatedAt: Date.now() }, ...prev]);
+      setSessions(prev => [{ id: newId, projectId: currentProjectId || undefined, title: 'New Chat', messages: [], updatedAt: Date.now() }, ...prev]);
       setIsDrawerOpen(false);
     });
   };
@@ -863,7 +846,7 @@ export default function App() {
     
     // --- Feature 14: Auto-title ---
     if (prevMessages.length === 0) {
-      generateTitle(userMessageContent, { geminiApiKey: settings.geminiApiKey }).then(title => {
+      generateTitle(userMessageContent, { provider: apiProviders.find(p => p.id === customModels.find(m => m.id === settings.selectedModelId)?.providerId) }).then(title => {
         setSessions(prev => prev.map(s => s.id === sessionId ? { ...s, title } : s));
       });
     }
@@ -902,7 +885,6 @@ export default function App() {
       
       const execConfig = {
         modelId: modelIdToUse,
-        geminiApiKey: settings.geminiApiKey,
         provider: providerConfig,
         temperature: settings.temperature,
         topP: settings.topP,
@@ -989,7 +971,10 @@ export default function App() {
       const formattedMemories = settings.userMemories?.length > 0 ? `\n\nUSER MEMORIES/FACTS (Keep these in mind):\n${settings.userMemories.map(m => `- ${m}`).join('\n')}` : '';
       const skillContext = settings.installedSkills?.length > 0 ? `\n\nAVAILABLE SKILLS (These capabilities are abstractly available, adapt responses to assume these constraints when asked):\n${settings.installedSkills.map(s => `- ${s.name}: ${s.description}`).join('\n')}` : '';
 
-      const fullInstruction = settings.systemPrompt + 
+      const projectCtx = currentProjectId ? projects.find(p => p.id === currentProjectId) : null;
+      const projectStr = projectCtx ? `\n\n=== PROJECT WORKSPACE CONTEXT ===\nYou are currently operating within the project workspace "${projectCtx.name}".\nDescription & Context: ${projectCtx.description || 'None provided.'}\nRemember to tailor your responses, references, and suggestions to this specific project context.` : '';
+
+      const fullInstruction = settings.systemPrompt + projectStr + 
         (settings.forceBengali ? "\n\nIMPORTANT: You MUST reply in Bengali or Banglish for all your responses." : "") +
         formattedMemories + skillContext;
 
@@ -1016,7 +1001,7 @@ export default function App() {
         speakText(accum, assistantMsgId);
       }
     } catch (e: any) {
-      if (e.message === 'MISSING_API_KEY') {
+      if (e.message?.includes('MISSING_API_PROVIDER')) {
         setErrorText('API_KEY_ERROR');
       } else if (e.message === 'Failed to fetch' || String(e.message).includes('Failed to fetch')) {
         setErrorText('Failed to establish connection to the API. This is usually caused by ad-blockers, network configuration, or CORS blocking.');
@@ -1153,9 +1138,17 @@ export default function App() {
   const speakText = async (text: string, id: string | null = null) => {
     vibrate();
 
+    // Clear any existing timeout
+    if ((window as any).__ds_tts_timeout) {
+       clearTimeout((window as any).__ds_tts_timeout);
+    }
+
     // Stop current speaking
     window.speechSynthesis.cancel();
     (window as any).__ds_tts_stopped = true;
+    (window as any).__ds_tts_session = Date.now();
+    const currentSessionId = (window as any).__ds_tts_session;
+
     if (ttsAudioRef.current) {
         ttsAudioRef.current.pause();
         ttsAudioRef.current = null;
@@ -1171,13 +1164,14 @@ export default function App() {
     (window as any).__ds_tts_stopped = false;
 
     try {
-      // Remove code blocks, inline code, and URLs to ensure only generated text is read
+      // Remove code blocks, inline code, URLs, and emojis to ensure only generated text is read
       const textToRead = text
         .replace(/```[\s\S]*?```/g, '') // Remove code blocks completely
         .replace(/`([^`]+)`/g, '$1')    // Strip inline code backticks
         .replace(/https?:\/\/[^\s]+/g, 'link') // Replace URLs
         .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Extract text from markdown links
         .replace(/[*_~#>-]/g, '')       // Remove markdown symbols but keep punctuation
+        .replace(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, '') // Remove emojis and icons
         .trim();
 
       if (!textToRead) {
@@ -1197,6 +1191,9 @@ export default function App() {
       let voices = window.speechSynthesis.getVoices();
       
       const utterAndPlay = () => {
+        // Prevent executing if session changed
+        if ((window as any).__ds_tts_session !== currentSessionId || (window as any).__ds_tts_stopped) return;
+
         voices = window.speechSynthesis.getVoices();
         let selectedVoice: SpeechSynthesisVoice | null = null;
         if (voices.length > 0) {
@@ -1213,12 +1210,12 @@ export default function App() {
         let chunkIndex = 0;
 
         const speakNextChunk = () => {
-          if ((window as any).__ds_tts_stopped) {
-             setIsSpeakingId(null);
+          if ((window as any).__ds_tts_session !== currentSessionId || (window as any).__ds_tts_stopped) {
+             if ((window as any).__ds_tts_session === currentSessionId) setIsSpeakingId(null);
              return;
           }
           if (chunkIndex >= chunks.length) {
-            setIsSpeakingId(null);
+            if ((window as any).__ds_tts_session === currentSessionId) setIsSpeakingId(null);
             return;
           }
 
@@ -1259,7 +1256,7 @@ export default function App() {
           utterance.pitch = basePitch;
 
           utterance.onend = () => {
-            if ((window as any).__ds_tts_stopped) return;
+            if ((window as any).__ds_tts_session !== currentSessionId || (window as any).__ds_tts_stopped) return;
             chunkIndex++;
             // Natural Breathing Flow and Micro Pauses
             let delay = 100; // default momentum
@@ -1267,15 +1264,15 @@ export default function App() {
             else if (isComma) delay = 250; // short pause = quick thought / breath
             else if (chunk.endsWith('.') || isQuestion || isExclamation) delay = 400; // medium pause = emotional transition
             
-            setTimeout(() => {
+            (window as any).__ds_tts_timeout = setTimeout(() => {
                 speakNextChunk();
             }, delay);
           };
 
           utterance.onerror = (e) => {
             console.error('TTS Error:', e);
-            if ((e as any).error !== 'canceled') {
-                setIsSpeakingId(null);
+            if ((e as any).error !== 'canceled' && (e as any).error !== 'interrupted') {
+                if ((window as any).__ds_tts_session === currentSessionId) setIsSpeakingId(null);
                 showToast('Error playing audio');
             }
           };
@@ -1287,15 +1284,22 @@ export default function App() {
       };
 
       if (voices.length === 0) {
-        window.speechSynthesis.onvoiceschanged = () => {
-          utterAndPlay();
+        let voicesChangedFired = false;
+        const callback = () => {
+            if (voicesChangedFired) return;
+            voicesChangedFired = true;
+            window.speechSynthesis.removeEventListener('voiceschanged', callback);
+            utterAndPlay();
         };
+        window.speechSynthesis.addEventListener('voiceschanged', callback);
+        // Fallback in case voiceschanged never fires (e.g., some Android browsers)
+        setTimeout(() => { if (!voicesChangedFired) callback(); }, 1000);
       } else {
         utterAndPlay();
       }
     } catch (err) {
       console.error(err);
-      setIsSpeakingId(null);
+      if ((window as any).__ds_tts_session === currentSessionId) setIsSpeakingId(null);
       showToast('Error generating TTS');
     }
   };
@@ -1391,16 +1395,53 @@ export default function App() {
 
       {isMemoryMenuOpen && <MemoryMenu settings={settings} setSettings={setSettings} onClose={() => setIsMemoryMenuOpen(false)} vibrate={vibrate} showToast={showToast} />}
       <ExtensionMarketplace settings={settings} setSettings={setSettings} isOpen={isExtensionMarketplaceOpen} onClose={() => setIsExtensionMarketplaceOpen(false)} vibrate={vibrate} showToast={showToast} />
+      <ProjectWorkspaceModal 
+        isOpen={isWorkspaceModalOpen} 
+        onClose={() => setIsWorkspaceModalOpen(false)} 
+        currentProjectId={currentProjectId} 
+        onProjectSelect={(id) => { 
+          setCurrentProjectId(id); 
+          
+          const projectSessions = sessions.filter(s => id ? s.projectId === id : !s.projectId);
+          if (projectSessions.length > 0) {
+            const sorted = projectSessions.sort((a, b) => b.updatedAt - a.updatedAt);
+            setCurrentSessionId(sorted[0].id);
+          } else {
+            setCurrentSessionId(null);
+          }
+
+          setIsWorkspaceModalOpen(false); 
+          setIsDrawerOpen(false); 
+        }} 
+        onProjectDelete={(id) => {
+          setSessions(prev => prev.filter(s => s.projectId !== id));
+          if (currentProjectId === id) {
+            setCurrentProjectId(null);
+            setCurrentSessionId(null);
+          }
+        }}
+      />
 
       {/* Feature 2: Native Android Drawer */}
       <div id="side-drawer" className={`fixed inset-y-0 left-0 w-[85vw] max-w-[320px] bg-[var(--bg-drawer)] shadow-2xl z-[120] transform transition-transform duration-300 ease-out flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="p-4 pb-3 border-b border-[var(--border-drawer)] flex justify-between items-center relative z-10">
-          <div className="flex items-center gap-2">
-             <BrandLogo className="w-10 h-10 text-[var(--logo-color)]" />
-             <h2 className="font-serif text-[1.4rem] tracking-tighter text-[var(--logo-color)]">DROIDE</h2>
+        <div className="p-4 pb-3 border-b border-[var(--border-drawer)] flex flex-col relative z-10 gap-3">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-2">
+               <BrandLogo className="w-10 h-10 text-[var(--logo-color)]" />
+               <h2 className="font-serif text-[1.4rem] tracking-tighter text-[var(--logo-color)]">DROIDE</h2>
+            </div>
+            <button onClick={() => { setIsDrawerOpen(false); vibrate(); }} className="p-2 -mr-2 hover:bg-[var(--surface-hover)] rounded-full transition-colors sm:hidden active:scale-95">
+               <X className="w-6 h-6 text-[var(--text-primary)]" />
+            </button>
           </div>
-          <button onClick={() => { setIsDrawerOpen(false); vibrate(); }} className="p-2 -mr-2 hover:bg-[var(--surface-hover)] rounded-full transition-colors sm:hidden active:scale-95">
-             <X className="w-6 h-6 text-[var(--text-primary)]" />
+          <button onClick={() => setIsWorkspaceModalOpen(true)} className="flex items-center justify-between w-full p-2 bg-[var(--surface-hover)] border border-[var(--surface-border)] rounded-xl hover:border-[var(--accent)]/50 transition-colors">
+            <div className="flex items-center gap-2 overflow-hidden">
+               <FolderIcon className="w-4 h-4 text-[var(--accent)] shrink-0" />
+               <span className="text-xs font-semibold truncate text-[var(--text-primary)]">
+                 {currentProjectId ? (projects.find(p => p.id === currentProjectId)?.name || 'Unknown Workspace') : 'Default Workspace'}
+               </span>
+            </div>
+            <ChevronDown className="w-4 h-4 text-[var(--text-muted)] shrink-0" />
           </button>
         </div>
         
@@ -1897,11 +1938,6 @@ export default function App() {
             <div className="px-5 mt-6 mb-24">
             </div>
           </div>
-          <div className="absolute bottom-4 inset-x-4">
-             <button onClick={() => setIsAiConfigOpen(false)} className="w-full bg-[var(--text-primary)] text-[var(--bg-main)] font-semibold py-4 rounded-2xl shadow-xl active:scale-[0.98] transition-transform text-[15px] flex items-center justify-center">
-               Done
-             </button>
-          </div>
         </div>
       )}
       {isApiConfigOpen && (
@@ -1991,18 +2027,13 @@ export default function App() {
                       </div>
                       <div className="flex items-center gap-2">
                         <button onClick={() => { setEditingProviderId(provider.id); vibrate(); }} className={`p-2.5 rounded-xl transition-all ${editingProviderId === provider.id ? 'bg-blue-500 text-white shadow-md shadow-blue-500/20' : 'bg-[var(--surface-hover)] text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}><Edit2 className="w-4 h-4" /></button>
-                        <button onClick={() => { if(confirm('Delete provider?')) setApiProviders(p => p.filter(x => x.id !== provider.id)); }} className="p-2.5 bg-[var(--danger)]/10 text-[var(--danger)] rounded-xl active:bg-[var(--danger)] active:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
+                        <button onClick={() => { setApiProviders(p => p.filter(x => x.id !== provider.id)); vibrate(); }} className="p-2.5 bg-[var(--danger)]/10 text-[var(--danger)] rounded-xl active:bg-[var(--danger)] active:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     </div>
                   ))
                 )}
               </div>
             </section>
-          </div>
-          <div className="absolute bottom-4 inset-x-4">
-             <button onClick={() => setIsApiConfigOpen(false)} className="w-full bg-[var(--text-primary)] text-[var(--bg-main)] font-semibold py-4 rounded-2xl shadow-xl active:scale-[0.98] transition-transform text-[15px] flex items-center justify-center">
-               Done
-             </button>
           </div>
         </div>
       )}
@@ -2114,18 +2145,13 @@ export default function App() {
                       </div>
                       <div className="flex items-center gap-2">
                         <button onClick={() => { setEditingModelId(model.id); vibrate(); }} className={`p-2.5 rounded-xl transition-all ${editingModelId === model.id ? 'bg-purple-500 text-white shadow-md shadow-purple-500/20' : 'bg-[var(--surface-hover)] text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}><Edit2 className="w-4 h-4" /></button>
-                        <button onClick={() => { if(confirm('Delete model?')) setCustomModels(p => p.filter(x => x.id !== model.id)); }} className="p-2.5 bg-[var(--danger)]/10 text-[var(--danger)] rounded-xl active:bg-[var(--danger)] active:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
+                        <button onClick={() => { setCustomModels(p => p.filter(x => x.id !== model.id)); vibrate(); }} className="p-2.5 bg-[var(--danger)]/10 text-[var(--danger)] rounded-xl active:bg-[var(--danger)] active:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     </div>
                   ))
                 )}
               </div>
             </section>
-          </div>
-          <div className="absolute bottom-4 inset-x-4">
-             <button onClick={() => setIsCustomModelsOpen(false)} className="w-full bg-[var(--text-primary)] text-[var(--bg-main)] font-semibold py-4 rounded-2xl shadow-xl active:scale-[0.98] transition-transform text-[15px] flex items-center justify-center">
-               Done
-             </button>
           </div>
         </div>
       )}
@@ -2373,7 +2399,7 @@ export default function App() {
             {errorText === 'API_KEY_ERROR' ? (
               <div className="flex items-center justify-center gap-2 text-[var(--danger)] font-medium my-4 px-4 py-3 bg-[var(--danger)]/5 rounded-2xl border border-[var(--danger)]/10">
                 <AlertTriangle className="w-5 h-5 shrink-0" />
-                <span className="text-sm">API Key not configured. Please check your settings.</span>
+                <span className="text-sm">No custom API provider configured. Please set one up in Settings.</span>
                 <AlertTriangle className="w-5 h-5 shrink-0" />
               </div>
             ) : errorText && (

@@ -515,20 +515,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               </div>
             </section>
 
-            <section>
-              <h3 className="text-lg font-bold text-[var(--text-primary)] mb-4">API Keys</h3>
-              <div>
-                <label className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1.5 ml-1">Gemini API Key</label>
-                <input 
-                  type="password" 
-                  value={settings.geminiApiKey || ''} 
-                  onChange={e => setSettings(p => ({...p, geminiApiKey: e.target.value}))}
-                  placeholder="Enter your API Key..."
-                  className="w-full p-3.5 bg-[var(--surface-hover)] border border-[var(--surface-border)] rounded-2xl text-[var(--text-primary)] focus:ring-1 focus:ring-[var(--accent)] outline-none"
-                />
-                <p className="text-[11px] text-[var(--text-muted)] ml-1 mt-1.5">If empty, uses the default system key or prompts on demand.</p>
-              </div>
-            </section>
+  
 
             <section>
               <h3 className="text-lg font-bold text-[var(--text-primary)] mb-4">Storage & System</h3>

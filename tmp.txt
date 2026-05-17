@@ -1,74 +1,32 @@
-text-[15px]
-text-[15px]
-text-sm
-text-sm
-text-sm
-text-sm
-text-sm
-text-xs
-text-xs
-text-sm
-text-xl
-text-sm
-text-xl
-text-xs
-text-xs
-text-sm
-text-sm
-text-sm
-text-sm
-text-xl
-text-base
-text-xs
-text-base
-text-xs
-text-xs
-text-xs
-text-xs
-text-sm
-text-lg
-text-xs
-text-sm
-text-sm
-text-sm
-text-sm
-text-xs
-text-lg
-text-xs
-text-sm
-text-sm
-text-sm
-text-sm
-text-sm
-text-xs
-text-xs
-text-base
-text-[15px]
-text-sm
-text-sm
-text-sm
-text-sm
-text-lg
-text-[14px]
-text-[16px]
-text-sm
-text-sm
-text-[16px]
-text-sm
-text-sm
-text-sm
-text-sm
-text-xs
-text-[16px]
-text-xl
-text-sm
-text-xl
-text-sm
-text-xs
-text-xl
-text-xs
-text-xs
-text-xs
-text-sm
-text-xs
-text-xs
+77:  const [elapsed, setElapsed] = useState(0);
+275:  const [showSplash, setShowSplash] = useState(true);
+276:  const [fadeSplash, setFadeSplash] = useState(false);
+284:  const [inputText, setInputText] = useState('');
+285:  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+286:  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+288:  const [isExtensionMarketplaceOpen, setIsExtensionMarketplaceOpen] = useState(false);
+290:  const [isAiConfigOpen, setIsAiConfigOpen] = useState(false);
+291:  const [isMemoryMenuOpen, setIsMemoryMenuOpen] = useState(false);
+293:  const [isApiConfigOpen, setIsApiConfigOpen] = useState(false);
+294:  const [isCustomModelsOpen, setIsCustomModelsOpen] = useState(false);
+295:  const [isModelSelectorOpen, setIsModelSelectorOpen] = useState(false);
+296:  const [isGenerating, setIsGenerating] = useState(false);
+298:  const [isGlobalLoading, setIsGlobalLoading] = useState(false);
+299:  const [globalLoadingText, setGlobalLoadingText] = useState('Loading...');
+312:  const [errorText, setErrorText] = useState('');
+313:  const [isProcessingFiles, setIsProcessingFiles] = useState(false);
+314:  const [showMicPrompt, setShowMicPrompt] = useState(false);
+317:  const [searchQuery, setSearchQuery] = useState('');
+318:  const [isSearchFocused, setIsSearchFocused] = useState(false);
+320:  const [isFolderModalOpen, setIsFolderModalOpen] = useState(false);
+322:  const [newFolderName, setNewFolderName] = useState('');
+324:  const [isPromptLibraryOpen, setIsPromptLibraryOpen] = useState(false);
+325:  const [isExportMenuOpen, setIsExportMenuOpen] = useState(false);
+326:  const [isManageMemoriesOpen, setIsManageMemoriesOpen] = useState(false);
+327:  const [isManageSharedChatsOpen, setIsManageSharedChatsOpen] = useState(false);
+329:  const [newPromptName, setNewPromptName] = useState('');
+330:  const [newPromptContent, setNewPromptContent] = useState('');
+332:  const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
+333:  const [showScrollFAB, setShowScrollFAB] = useState(false);
+339:  const [editingMessageText, setEditingMessageText] = useState('');
+346:  const [toastMessage, setToastMessage] = useState('');

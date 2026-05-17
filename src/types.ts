@@ -23,7 +23,6 @@ export type CustomModel = {
 export type AppSettings = { 
   theme: 'light' | 'dark' | 'system'; 
   systemPrompt: string; 
-  geminiApiKey: string;
   selectedModelId: string;
   forceBengali: boolean;
   streamResponses: boolean;
@@ -67,8 +66,18 @@ export type AppSettings = {
   aiRequirements?: { id: string; title: string; details: string; timestamp: number }[];
 };
 
+export interface Project {
+  id: string;
+  name: string;
+  description?: string;
+  createdAt: number;
+  updatedAt: number;
+  settings?: any;
+}
+
 export interface Session {
   id: string;
+  projectId?: string; // Optional for backward compatibility with old sessions
   title: string;
   messages: Message[];
   updatedAt: number;

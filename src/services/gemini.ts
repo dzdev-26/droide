@@ -1,5 +1,3 @@
-import { GoogleGenAI } from '@google/genai';
-
 function getGeminiConfig(apiKey: string) {
   const isCapacitor = typeof window !== 'undefined' && (window.location.origin === 'http://localhost' || window.location.origin.startsWith('capacitor://'));
   const aiUrl = isCapacitor ? undefined : (typeof window !== 'undefined' ? `${window.location.origin}/api/gemini` : 'http://localhost:3000/api/gemini');
@@ -266,7 +264,6 @@ export async function streamChat(
   onChunk: (text: string) => void,
   config: {
     modelId: string;
-    geminiApiKey?: string;
     provider?: { url: string; apiKey: string };
     temperature?: number;
     topP?: number;
@@ -332,8 +329,11 @@ ${systemInstruction || ''}`;
     finalSystemInstruction += "\n\n[RESTRICTION] Memory generation is DISABLED. Do NOT use the manage_memory tool to save facts about the user.";
   }
 
-  if (config.provider) {
-    // ... (rest of provider logic)
+    const provider = config.provider;
+    if (!provider) {
+      throw new Error('MISSING_API_PROVIDER: Configure a Custom API Provider in settings to use the chat.');
+    }
+    
     // OpenAI Compatible API (e.g. OpenRouter)
     const openAIMessages: any[] = [];
     if (finalSystemInstruction) {
@@ -383,20 +383,30 @@ ${systemInstruction || ''}`;
     if (config.temperature !== undefined) requestBody.temperature = config.temperature;
     if (config.topP !== undefined) requestBody.top_p = config.topP;
 
+    // Standardize a 60-second fetch timeout for robust Android proxy interaction
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 60000);
+
     const res = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${config.provider.apiKey}`
       },
-      signal,
+      signal: signal ? (signal.aborted ? signal : controller.signal) : controller.signal,
       body: JSON.stringify(requestBody)
     }).catch(e => {
+      clearTimeout(timeoutId);
+      if (e.name === 'AbortError') {
+        throw new Error('Provider API Error: Request timed out. The model response is taking too long.');
+      }
       if (e.message === 'Failed to fetch') {
         throw new Error('Failed to fetch API. If using a local or HTTP endpoint, it may be blocked by Mixed Content. Alternatively, the API provider may block client-side CORS requests.');
       }
       throw e;
     });
+
+    clearTimeout(timeoutId);
 
     if (!res.ok) {
       let errTxt = await res.text();
@@ -431,150 +441,6 @@ ${systemInstruction || ''}`;
         boundary = buffer.indexOf('\n');
       }
     }
-  } else {
-    // Google GenAI
-    const apiKey = config.geminiApiKey || process.env.GEMINI_API_KEY;
-    if (!apiKey) throw new Error('MISSING_API_KEY');
-    
-    const ai = new GoogleGenAI(getGeminiConfig(apiKey));
-    
-    const toolsConfig = buildTools(config);
-    
-    const chat = ai.chats.create({
-      model: config.modelId,
-      config: { 
-        systemInstruction: finalSystemInstruction,
-        tools: toolsConfig as any,
-        toolConfig: { includeServerSideToolInvocations: true },
-        temperature: config.temperature,
-        topP: config.topP,
-      },
-      history: history.map(h => ({
-        role: h.role,
-        parts: h.parts.map(p => {
-          if (p.text) return { text: p.text };
-          if (p.inlineData) return { inlineData: p.inlineData };
-          return { text: '' };
-        })
-      }))
-    });
-
-    const messageParts: any[] = [];
-    imagesBase64.forEach(img => {
-      messageParts.push({ inlineData: { mimeType: img.mimeType, data: img.data } });
-    });
-    if (newMessageText) messageParts.push({ text: newMessageText });
-
-    if (messageParts.length === 0) return;
-
-    let currentMessageParts = [...messageParts];
-    let isContinuing = true;
-
-    while (isContinuing) {
-      if (signal.aborted) throw new Error('AbortError');
-      isContinuing = false;
-      try {
-        const streamResponse = await chat.sendMessageStream({ message: currentMessageParts.length > 0 ? currentMessageParts : "" });
-        currentMessageParts = []; // Clear for next iteration if any
-
-        for await (const chunk of streamResponse) {
-          if (signal.aborted) throw new Error('AbortError');
-          
-          const calls = chunk.functionCalls;
-          if (calls && calls.length > 0) {
-            for (const call of calls) {
-              let toolResult: any = null;
-              let externalResult: any = undefined;
-              
-              if (onToolCall) {
-                externalResult = onToolCall({ name: call.name, args: call.args });
-              }
-
-              if (call.name === 'execute_code') {
-                const { language, code } = call.args as any;
-                toolResult = await executeCodeLocally(language, code);
-              } else if (call.name === 'read_url_content') {
-                const { url } = call.args as any;
-                toolResult = await fetchUrlLocally(url);
-              } else if (call.name === 'get_weather') {
-                const { lat, lon } = call.args as any;
-                toolResult = await getWeather(lat, lon);
-              } else if (call.name === 'search_places') {
-                const { query } = call.args as any;
-                toolResult = await searchPlaces(query);
-              } else if (call.name === 'get_sports_data') {
-                const { league, query } = call.args as any;
-                toolResult = await getSportsData(league, query);
-              } else if (call.name === 'generate_image') {
-                const { prompt } = call.args as any;
-                const encodedPrompt = encodeURIComponent(prompt);
-                const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1024&height=1024&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
-                toolResult = { success: true, url: imageUrl, message: "Image generated successfully via Pollinations AI." };
-              } else if (call.name === 'get_current_time') {
-                toolResult = { dateTime: new Date().toLocaleString(), timezone: Intl.DateTimeFormat().resolvedOptions().timeZone };
-              }
-              
-              if (toolResult === null && externalResult !== undefined) {
-                toolResult = externalResult;
-              }
-
-              if (toolResult !== null) {
-                currentMessageParts.push({
-                  functionResponse: { name: call.name, response: toolResult }
-                } as any);
-                isContinuing = true;
-              }
-            }
-          }
-
-          const text = chunk.text;
-          if (text) {
-            onChunk(text);
-          }
-        }
-      } catch (err: any) {
-        if (err.message?.includes('circulation is not enabled')) {
-          onChunk('\n\n[System: Tool execution completed, but this model does not support returning tool results in the same stream. Please wait for the next turn.]\n');
-          break;
-        } else {
-          throw err;
-        }
-      }
-    }
-  }
-}
-
-export async function listModels(apiKey: string): Promise<any[]> {
-  try {
-    const ai = new GoogleGenAI(getGeminiConfig(apiKey));
-    const response = await ai.models.list();
-    // In @google/genai, list() returns a direct result with models property or is an iterator
-    // Making it robust to both patterns
-    if (Array.isArray(response)) return response;
-    if ((response as any).models) return (response as any).models;
-    
-    const models: any[] = [];
-    if (typeof (response as any)[Symbol.asyncIterator] === 'function') {
-      for await (const model of (response as any)) {
-        models.push(model);
-      }
-    }
-    return models;
-  } catch (e) {
-    console.error("Failed to list models:", e);
-    return [];
-  }
-}
-
-export async function getModelMetadata(modelId: string, apiKey: string): Promise<any | null> {
-  try {
-    const ai = new GoogleGenAI(getGeminiConfig(apiKey));
-    const model = await ai.models.get({ model: modelId.startsWith('models/') ? modelId : `models/${modelId}` });
-    return model;
-  } catch (e) {
-    console.error(`Failed to get metadata for ${modelId}:`, e);
-    return null;
-  }
 }
 
 export async function fetchCustomModelMetadata(url: string, apiKey: string, modelId: string): Promise<any | null> {
@@ -617,14 +483,27 @@ export async function fetchCustomModelMetadata(url: string, apiKey: string, mode
 
 export async function generateTitle(messageText: string, config: any): Promise<string> {
   try {
-    const apiKey = config.geminiApiKey || process.env.GEMINI_API_KEY;
-    if (!apiKey) return "New Chat";
-    const ai = new GoogleGenAI(getGeminiConfig(apiKey));
-    const response = await ai.models.generateContent({
-       model: 'gemini-3-flash-preview',
-       contents: [{ role: 'user', parts: [{ text: `Generate a ultra-short title (max 2-3 words) for: "${messageText}". Just return the title text.` }] }]
+    if (!config.provider) return "New Chat";
+    
+    const url = config.provider.url;
+    const endpoint = url.endsWith('/') ? `${url}chat/completions` : `${url}/chat/completions`;
+
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${config.provider.apiKey}`
+      },
+      body: JSON.stringify({
+        model: config.modelId,
+        messages: [{ role: 'user', content: `Generate a ultra-short title (max 2-3 words) for: "${messageText}". Just return the title text.` }],
+        max_tokens: 10
+      })
     });
-    return response.text?.replace(/["'#*]/g, '').trim() || "New Chat";
+    
+    if (!res.ok) return "New Chat";
+    const data = await res.json();
+    return data.choices?.[0]?.message?.content?.replace(/["'#*]/g, '').trim() || "New Chat";
   } catch (e) {
     console.error("Title generation failed:", e);
     return "New Chat";
