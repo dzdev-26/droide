@@ -1346,7 +1346,7 @@ export default function App() {
   const wordCount = inputText.trim() ? inputText.trim().split(/\s+/).length : 0;
 
   return (
-    <div className="fixed inset-0 bg-[var(--bg-main)] text-[var(--text-secondary)] font-sans overflow-hidden flex flex-col w-full h-full pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
+    <div className="fixed inset-0 bg-[var(--bg-main)] text-[var(--text-secondary)] font-sans overflow-hidden flex flex-col w-full h-full">
       
       {/* Full App Preloader / Splash Screen */}
       {showSplash && (
@@ -1423,7 +1423,7 @@ export default function App() {
       />
 
       {/* Feature 2: Native Android Drawer */}
-      <div id="side-drawer" className={`fixed inset-y-0 left-0 w-[85vw] max-w-[320px] bg-[var(--bg-drawer)] shadow-2xl z-[120] transform transition-transform duration-300 ease-out flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div id="side-drawer" className={`fixed inset-y-0 left-0 w-[85vw] max-w-[320px] bg-[var(--bg-drawer)] shadow-2xl z-[120] transform transition-transform duration-300 ease-out flex flex-col pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="p-4 pb-3 border-b border-[var(--border-drawer)] flex flex-col relative z-10 gap-3">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
@@ -2166,7 +2166,7 @@ export default function App() {
       />
 
       {/* Main App */}
-      <div id="main-content" className="flex-1 flex flex-col w-full h-full relative z-10 pt-[max(env(safe-area-inset-top),4px)] pb-[max(env(safe-area-inset-bottom),4px)] overflow-hidden">
+      <div id="main-content" className="flex-1 flex flex-col w-full h-full relative z-10 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] overflow-hidden">
         <ChatHeader 
           onMenuClick={() => { setIsDrawerOpen(true); vibrate(); }}
           onModelSelectorClick={() => { 

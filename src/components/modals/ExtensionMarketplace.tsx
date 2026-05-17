@@ -155,7 +155,7 @@ export function ExtensionMarketplace({ isOpen, onClose, settings, setSettings, s
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-[var(--bg-main)] z-[200] flex flex-col animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 bg-[var(--bg-main)] z-[200] flex flex-col animate-in fade-in zoom-in-95 duration-200 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
       
       {/* Header (No Blur, Solid Background) */}
       <div className="px-4 py-4 border-b border-[var(--surface-border)] flex items-center justify-between shrink-0 bg-[var(--surface)] shadow-sm z-30">
