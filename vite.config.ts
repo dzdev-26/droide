@@ -1,13 +1,21 @@
+<<<<<<< HEAD
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig, loadEnv} from 'vite';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 import cascadeLayers from '@csstools/postcss-cascade-layers';
 import tailwindPostcss from '@tailwindcss/postcss';
+=======
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import {defineConfig, loadEnv} from 'vite';
+>>>>>>> 3658308 (update-1.1.0)
 
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
+<<<<<<< HEAD
     base: './',
     css: {
       postcss: {
@@ -22,6 +30,9 @@ export default defineConfig(({mode}) => {
       cssTarget: 'chrome87',
     },
     plugins: [react(), viteSingleFile()],
+=======
+    plugins: [react(), tailwindcss()],
+>>>>>>> 3658308 (update-1.1.0)
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },

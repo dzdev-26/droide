@@ -9,12 +9,21 @@ interface SettingsModalProps {
   onClose: () => void;
   settings: AppSettings;
   setSettings: React.Dispatch<React.SetStateAction<AppSettings>>;
+<<<<<<< HEAD
   settingsTab: 'general' | 'privacy' | 'capabilities' | 'connectors' | 'ai-requirements';
   setSettingsTab: (tab: 'general' | 'privacy' | 'capabilities' | 'connectors' | 'ai-requirements') => void;
+=======
+  settingsTab: 'general' | 'privacy' | 'capabilities' | 'connectors';
+  setSettingsTab: (tab: 'general' | 'privacy' | 'capabilities' | 'connectors') => void;
+>>>>>>> 3658308 (update-1.1.0)
   vibrate: (ms?: number) => void;
   onExportData?: () => void;
   onManageMemories?: () => void;
   onManageSharedChats?: () => void;
+<<<<<<< HEAD
+=======
+  onBrowseConnectors?: () => void;
+>>>>>>> 3658308 (update-1.1.0)
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({
@@ -27,7 +36,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   vibrate,
   onExportData,
   onManageMemories,
+<<<<<<< HEAD
   onManageSharedChats
+=======
+  onManageSharedChats,
+  onBrowseConnectors
+>>>>>>> 3658308 (update-1.1.0)
 }) => {
   const avatarInputRef = React.useRef<HTMLInputElement>(null);
   const [isConfirmingClearCache, setIsConfirmingClearCache] = React.useState(false);
@@ -57,6 +71,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     }
   };
 
+<<<<<<< HEAD
   const handleRemoveRequirement = (id: string) => {
     setSettings(prev => ({
       ...prev,
@@ -64,6 +79,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     }));
   };
 
+=======
+>>>>>>> 3658308 (update-1.1.0)
   return (
     <div className="fixed inset-0 bg-[var(--bg-main)] z-[150] flex flex-col pt-[max(env(safe-area-inset-top),16px)] pb-[max(env(safe-area-inset-bottom),16px)] animate-in fade-in duration-200">
       <input 
@@ -95,7 +112,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           { id: 'privacy', label: 'Privacy', icon: Shield },
           { id: 'capabilities', label: 'Capabilities', icon: Sparkles },
           { id: 'connectors', label: 'Connectors', icon: Link2 },
+<<<<<<< HEAD
           { id: 'ai-requirements', label: 'AI REQUIREMENTS', icon: GitFork },
+=======
+>>>>>>> 3658308 (update-1.1.0)
         ].map((tab) => (
           <button
             key={tab.id}
@@ -207,6 +227,26 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     ))}
                   </select>
                 </div>
+<<<<<<< HEAD
+=======
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex-1 mr-4">
+                    <p className="text-sm font-medium text-[var(--text-primary)]">Chat Font Size: {settings.chatFontSize || 15}px</p>
+                  </div>
+                  <input
+                    type="range"
+                    min="8"
+                    max="22"
+                    step="1"
+                    value={settings.chatFontSize || 15}
+                    onChange={e => setSettings(prev => ({ ...prev, chatFontSize: parseInt(e.target.value) }))}
+                    className="w-[120px] h-2 rounded-lg appearance-none cursor-pointer bg-[var(--surface-border)] accent-[var(--accent)]"
+                    style={{background: `linear-gradient(to right, var(--accent) 0%, var(--accent) ${(((settings.chatFontSize || 15) - 8) / 14) * 100}%, var(--surface-border) ${(((settings.chatFontSize || 15) - 8) / 14) * 100}%, var(--surface-border) 100%)`}}
+                  />
+                </div>
+
+>>>>>>> 3658308 (update-1.1.0)
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-[var(--text-primary)]">Cursor Style</span>
                   <select 
@@ -223,6 +263,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 </div>
 
                 <div className="flex items-center justify-between">
+<<<<<<< HEAD
                   <span className="text-sm font-medium text-[var(--text-primary)]">Voice</span>
                   <select 
                     value={settings.voice || 'Buttery'} 
@@ -236,6 +277,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 </div>
 
                 <div className="flex items-center justify-between">
+=======
+>>>>>>> 3658308 (update-1.1.0)
                   <div className="flex-1 mr-4">
                     <p className="text-sm font-medium text-[var(--text-primary)]">Stream responses</p>
                     <p className="text-[11px] text-[var(--text-muted)]">Show text chunk-by-chunk</p>
@@ -495,7 +538,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     Allow DROIDE to reference other apps and services for more context.
                   </p>
                 </div>
+<<<<<<< HEAD
                 <button className="px-4 py-2 border border-[var(--surface-border)] rounded-xl text-sm font-bold active:scale-95 transition-transform whitespace-nowrap">Browse connectors</button>
+=======
+                <button onClick={() => { vibrate(); onBrowseConnectors?.(); }} className="px-4 py-2 border border-[var(--surface-border)] rounded-xl text-sm font-bold active:scale-95 transition-transform whitespace-nowrap">Browse connectors</button>
+>>>>>>> 3658308 (update-1.1.0)
               </div>
             </section>
 
@@ -552,6 +599,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           </div>
         )}
 
+<<<<<<< HEAD
         {settingsTab === 'ai-requirements' && (
           <div className="p-6 space-y-6 max-w-2xl mx-auto pb-24">
             <section>
@@ -605,6 +653,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           </div>
         )}
 
+=======
+>>>>>>> 3658308 (update-1.1.0)
       </div>
 
       {/* Bottom Action Bar */}
