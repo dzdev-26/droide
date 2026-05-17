@@ -1,16 +1,5 @@
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
-<<<<<<< HEAD
-import App from './App.tsx';
-import './index.css';
-
-// Polyfill for structuredClone for older Android WebViews
-if (typeof structuredClone !== 'function') {
-  window.structuredClone = function <T>(value: T): T {
-    return JSON.parse(JSON.stringify(value));
-  };
-}
-=======
 import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { SplashScreen } from '@capacitor/splash-screen';
@@ -34,14 +23,10 @@ const initApp = async () => {
 };
 
 initApp();
->>>>>>> 3658308 (update-1.1.0)
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
   </StrictMode>,
 );
-<<<<<<< HEAD
-=======
 
->>>>>>> 3658308 (update-1.1.0)

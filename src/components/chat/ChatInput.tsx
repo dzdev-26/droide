@@ -72,11 +72,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   });
 
   return (
-<<<<<<< HEAD
-    <div className="px-4 pb-4 bg-[var(--bg-main)]">
-=======
     <div className="px-4 pb-4 pb-[calc(1rem+env(safe-area-inset-bottom))] bg-[var(--bg-main)]">
->>>>>>> 3658308 (update-1.1.0)
       <div className="max-w-4xl mx-auto">
         <AnimatePresence>
           {pendingImages.length > 0 && (

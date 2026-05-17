@@ -9,21 +9,13 @@ interface SettingsModalProps {
   onClose: () => void;
   settings: AppSettings;
   setSettings: React.Dispatch<React.SetStateAction<AppSettings>>;
-<<<<<<< HEAD
-  settingsTab: 'general' | 'privacy' | 'capabilities' | 'connectors' | 'ai-requirements';
-  setSettingsTab: (tab: 'general' | 'privacy' | 'capabilities' | 'connectors' | 'ai-requirements') => void;
-=======
   settingsTab: 'general' | 'privacy' | 'capabilities' | 'connectors';
   setSettingsTab: (tab: 'general' | 'privacy' | 'capabilities' | 'connectors') => void;
->>>>>>> 3658308 (update-1.1.0)
   vibrate: (ms?: number) => void;
   onExportData?: () => void;
   onManageMemories?: () => void;
   onManageSharedChats?: () => void;
-<<<<<<< HEAD
-=======
   onBrowseConnectors?: () => void;
->>>>>>> 3658308 (update-1.1.0)
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({
@@ -36,12 +28,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   vibrate,
   onExportData,
   onManageMemories,
-<<<<<<< HEAD
-  onManageSharedChats
-=======
   onManageSharedChats,
   onBrowseConnectors
->>>>>>> 3658308 (update-1.1.0)
 }) => {
   const avatarInputRef = React.useRef<HTMLInputElement>(null);
   const [isConfirmingClearCache, setIsConfirmingClearCache] = React.useState(false);
@@ -71,16 +59,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     }
   };
 
-<<<<<<< HEAD
-  const handleRemoveRequirement = (id: string) => {
-    setSettings(prev => ({
-      ...prev,
-      aiRequirements: (prev.aiRequirements || []).filter(r => r.id !== id)
-    }));
-  };
-
-=======
->>>>>>> 3658308 (update-1.1.0)
   return (
     <div className="fixed inset-0 bg-[var(--bg-main)] z-[150] flex flex-col pt-[max(env(safe-area-inset-top),16px)] pb-[max(env(safe-area-inset-bottom),16px)] animate-in fade-in duration-200">
       <input 
@@ -112,10 +90,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           { id: 'privacy', label: 'Privacy', icon: Shield },
           { id: 'capabilities', label: 'Capabilities', icon: Sparkles },
           { id: 'connectors', label: 'Connectors', icon: Link2 },
-<<<<<<< HEAD
-          { id: 'ai-requirements', label: 'AI REQUIREMENTS', icon: GitFork },
-=======
->>>>>>> 3658308 (update-1.1.0)
         ].map((tab) => (
           <button
             key={tab.id}
@@ -227,8 +201,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     ))}
                   </select>
                 </div>
-<<<<<<< HEAD
-=======
                 
                 <div className="flex items-center justify-between">
                   <div className="flex-1 mr-4">
@@ -246,7 +218,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   />
                 </div>
 
->>>>>>> 3658308 (update-1.1.0)
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-[var(--text-primary)]">Cursor Style</span>
                   <select 
@@ -263,22 +234,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 </div>
 
                 <div className="flex items-center justify-between">
-<<<<<<< HEAD
-                  <span className="text-sm font-medium text-[var(--text-primary)]">Voice</span>
-                  <select 
-                    value={settings.voice || 'Buttery'} 
-                    onChange={e => setSettings(p => ({...p, voice: e.target.value}))}
-                    className="bg-[var(--surface-hover)] border border-[var(--surface-border)] rounded-lg px-3 py-1.5 text-xs font-bold text-[var(--text-primary)] outline-none"
-                  >
-                    <option value="Buttery">Buttery</option>
-                    <option value="Crisp">Crisp</option>
-                    <option value="Deep">Deep</option>
-                  </select>
-                </div>
-
-                <div className="flex items-center justify-between">
-=======
->>>>>>> 3658308 (update-1.1.0)
                   <div className="flex-1 mr-4">
                     <p className="text-sm font-medium text-[var(--text-primary)]">Stream responses</p>
                     <p className="text-[11px] text-[var(--text-muted)]">Show text chunk-by-chunk</p>
@@ -538,11 +493,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     Allow DROIDE to reference other apps and services for more context.
                   </p>
                 </div>
-<<<<<<< HEAD
-                <button className="px-4 py-2 border border-[var(--surface-border)] rounded-xl text-sm font-bold active:scale-95 transition-transform whitespace-nowrap">Browse connectors</button>
-=======
                 <button onClick={() => { vibrate(); onBrowseConnectors?.(); }} className="px-4 py-2 border border-[var(--surface-border)] rounded-xl text-sm font-bold active:scale-95 transition-transform whitespace-nowrap">Browse connectors</button>
->>>>>>> 3658308 (update-1.1.0)
               </div>
             </section>
 
@@ -599,62 +550,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           </div>
         )}
 
-<<<<<<< HEAD
-        {settingsTab === 'ai-requirements' && (
-          <div className="p-6 space-y-6 max-w-2xl mx-auto pb-24">
-            <section>
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-[var(--accent)]" />
-                    AI Direct Requirements
-                  </h3>
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                    When the AI model discovers a lack of native tools, features, or UI capabilities to fulfill
-                    your requests, it will directly post those requirements and feature requests here.
-                    Developers can review this board.
-                  </p>
-                </div>
-              </div>
-            </section>
-            
-            <div className="space-y-4">
-              {(!settings.aiRequirements || settings.aiRequirements.length === 0) ? (
-                <div className="p-8 mt-4 border border-dashed border-[var(--border-drawer)] bg-[var(--surface-hover)] rounded-3xl flex flex-col items-center justify-center text-center">
-                  <Monitor className="w-10 h-10 mb-4 text-[var(--text-muted)] opacity-50" />
-                  <p className="text-sm font-bold text-[var(--text-primary)]">No AI requirements posted yet.</p>
-                  <p className="text-xs text-[var(--text-muted)] mt-2 max-w-xs">AI will post here when it hits limitations and requests developers to add missing capabilities to the app.</p>
-                </div>
-              ) : (
-                settings.aiRequirements.map(req => (
-                  <div key={req.id} className="p-5 border border-[var(--border-drawer)] bg-[var(--surface)] hover:bg-[var(--surface-hover)] transition-colors rounded-2xl relative group">
-                    <button 
-                      onClick={() => handleRemoveRequirement(req.id)}
-                      className="absolute top-4 right-4 p-2 opacity-50 hover:opacity-100 hover:bg-[var(--surface-border)] rounded-full transition-all text-red-400"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="px-2 py-0.5 bg-blue-500/20 text-blue-500 font-bold text-[10px] rounded-full uppercase tracking-wider">
-                        Feature Request
-                      </span>
-                      <span className="text-[10px] font-medium text-[var(--text-muted)]">
-                        {new Date(req.timestamp).toLocaleString()}
-                      </span>
-                    </div>
-                    <h4 className="font-bold text-base text-[var(--text-primary)] mb-2 pr-8">{req.title}</h4>
-                    <p className="text-sm text-[var(--text-muted)] whitespace-pre-wrap leading-relaxed">
-                      {req.details}
-                    </p>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-        )}
-
-=======
->>>>>>> 3658308 (update-1.1.0)
       </div>
 
       {/* Bottom Action Bar */}

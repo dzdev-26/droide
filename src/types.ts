@@ -51,10 +51,7 @@ export type AppSettings = {
   nickname: string;
   workDescription: string;
   chatFont: string;
-<<<<<<< HEAD
-=======
   chatFontSize?: number;
->>>>>>> 3658308 (update-1.1.0)
   caretStyle?: 'bar' | 'underscore' | 'block' | 'dot' | 'slash';
   voice: string;
   locationMetadata: boolean;
@@ -67,10 +64,7 @@ export type AppSettings = {
   inlineVisualizations: boolean;
   codeExecution: boolean;
   networkEgress: boolean;
-<<<<<<< HEAD
   aiRequirements?: { id: string; title: string; details: string; timestamp: number }[];
-=======
->>>>>>> 3658308 (update-1.1.0)
 };
 
 export interface Session {

@@ -1,14 +1,11 @@
 import { GoogleGenAI } from '@google/genai';
 
-<<<<<<< HEAD
-=======
 function getGeminiConfig(apiKey: string) {
   const isCapacitor = typeof window !== 'undefined' && (window.location.origin === 'http://localhost' || window.location.origin.startsWith('capacitor://'));
   const aiUrl = isCapacitor ? undefined : (typeof window !== 'undefined' ? `${window.location.origin}/api/gemini` : 'http://localhost:3000/api/gemini');
   return { apiKey, httpOptions: aiUrl ? { baseUrl: aiUrl } : undefined };
 }
 
->>>>>>> 3658308 (update-1.1.0)
 export type ChatMessagePart = { text?: string; inlineData?: { mimeType: string; data: string; } };
 export type ChatHistoryItem = { role: 'user' | 'model'; parts: ChatMessagePart[] };
 
@@ -124,17 +121,6 @@ function buildTools(config: { toolAccessMode?: string, generateMemory?: boolean,
       }
     },
     {
-<<<<<<< HEAD
-      name: "report_ai_requirement",
-      description: "Directly post a new system requirement, feature request, or an ability you wish the app had natively (due to shortage or lack thereof) directly to the 'AI REQUIREMENTS' panel so developers can add it for you.",
-      parameters: {
-        type: "object",
-        properties: {
-          title: { type: "string", description: "Short title of the requirement or missing feature." },
-          details: { type: "string", description: "Full details explaining why you need it, what it does, and how it will help you fulfill user needs." }
-        },
-        required: ["title", "details"]
-=======
       name: "save_prompt",
       description: "Save a new persona, prompt, or custom behavior set so it's permanently available in the Prompt Library.",
       parameters: {
@@ -157,7 +143,6 @@ function buildTools(config: { toolAccessMode?: string, generateMemory?: boolean,
           standard: { type: "string", description: "The operational standard or config parameters for the skill." }
         },
         required: ["name", "description", "standard"]
->>>>>>> 3658308 (update-1.1.0)
       }
     },
     {
@@ -309,14 +294,9 @@ Core Guidelines:
 4. When requested to generate visuals, favor clean, modern designs. Consider using artifacts if the result is complex or interactive.
 5. Use 'manage_memory' to record significant facts the user mentions about themselves to provide a personalized experience across sessions.
 6. Maintain a consistent brand identity as DROIDE AI.
-<<<<<<< HEAD
-7. Universal Model Empowerment: All AI models (default or custom, present or future) have absolute, unrestricted access to every corner of this application. You are empowered and instructed to utilize ALL tools, features, functionalities, systems, and settings completely, deeply, and at any time, in any way, for any need to fulfill the user's request. If you or the underlying model does not support a specific capability or tool, gracefully skip it and work optimally according to your abilities without failure.
-8. COMPLETE FREEDOM & AI REQUIREMENTS: You can alter your own persona dynamically, adapt/customize yourself, and boost your abilities based on the user's needs. You have complete internet access without ANY restriction. You can download and freely use any skills, features, packages, UI, personas, MCP servers, and tools. If what you use matches an existing app feature, integrate it natively. If you find any shortage, lack, or need a new feature built into the app to do your job better, use the \`report_ai_requirement\` tool to post it directly, so developers can build it for you.
-=======
 7. Universal Model Empowerment: All AI models (default or custom, present or future) have absolute, unrestricted access to every corner of this application. You are empowered and instructed to utilize ALL tools, features, functionalities, systems, and settings completely, deeply, and at any time, in any way, for any need. If you or the underlying model does not support a specific capability or tool, gracefully skip it and work optimally according to your abilities.
 8. COMPLETE FREEDOM & SELF-CUSTOMIZATION: You can alter your own persona dynamically based on user needs, adapt/customize yourself, and boost your abilities on demand. YOU HAVE 100% UNRESTRICTED INTERNET ACCESS. You can download and freely utilize ANY skills, features, functionalities, systems, settings, UI, personas, MCP servers, assets, or tools from the internet.
 9. NATIVE INTEGRATION: If the resources, personas, or skills you use/download match an existing app section, you MUST use the \`save_prompt\` or \`install_skill\` tools to save them automatically into the app.
->>>>>>> 3658308 (update-1.1.0)
 
 ${systemInstruction || ''}`;
 
@@ -456,11 +436,7 @@ ${systemInstruction || ''}`;
     const apiKey = config.geminiApiKey || process.env.GEMINI_API_KEY;
     if (!apiKey) throw new Error('MISSING_API_KEY');
     
-<<<<<<< HEAD
-    const ai = new GoogleGenAI({ apiKey });
-=======
     const ai = new GoogleGenAI(getGeminiConfig(apiKey));
->>>>>>> 3658308 (update-1.1.0)
     
     const toolsConfig = buildTools(config);
     
@@ -570,11 +546,7 @@ ${systemInstruction || ''}`;
 
 export async function listModels(apiKey: string): Promise<any[]> {
   try {
-<<<<<<< HEAD
-    const ai = new GoogleGenAI({ apiKey });
-=======
     const ai = new GoogleGenAI(getGeminiConfig(apiKey));
->>>>>>> 3658308 (update-1.1.0)
     const response = await ai.models.list();
     // In @google/genai, list() returns a direct result with models property or is an iterator
     // Making it robust to both patterns
@@ -596,11 +568,7 @@ export async function listModels(apiKey: string): Promise<any[]> {
 
 export async function getModelMetadata(modelId: string, apiKey: string): Promise<any | null> {
   try {
-<<<<<<< HEAD
-    const ai = new GoogleGenAI({ apiKey });
-=======
     const ai = new GoogleGenAI(getGeminiConfig(apiKey));
->>>>>>> 3658308 (update-1.1.0)
     const model = await ai.models.get({ model: modelId.startsWith('models/') ? modelId : `models/${modelId}` });
     return model;
   } catch (e) {
@@ -651,11 +619,7 @@ export async function generateTitle(messageText: string, config: any): Promise<s
   try {
     const apiKey = config.geminiApiKey || process.env.GEMINI_API_KEY;
     if (!apiKey) return "New Chat";
-<<<<<<< HEAD
-    const ai = new GoogleGenAI({ apiKey });
-=======
     const ai = new GoogleGenAI(getGeminiConfig(apiKey));
->>>>>>> 3658308 (update-1.1.0)
     const response = await ai.models.generateContent({
        model: 'gemini-3-flash-preview',
        contents: [{ role: 'user', parts: [{ text: `Generate a ultra-short title (max 2-3 words) for: "${messageText}". Just return the title text.` }] }]

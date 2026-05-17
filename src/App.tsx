@@ -1,19 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-<<<<<<< HEAD
-import { Menu, Plus, Paperclip, Send, Settings as SettingsIcon, Trash2, Edit2, Copy, Share, Volume2, VolumeX, Square, RefreshCcw, Image as ImageIcon, Sparkles, X, Sun, Moon, Type, Code, Monitor, Mic, ChevronDown, ChevronRight, ChevronLeft, Check, Download, Loader2, AlertTriangle, FileText, Video, Music, Box, Archive, Info, Eye, Zap, ShieldCheck, Search, Folder as FolderIcon, BookMarked, FileJson, FileType, FileOutput, GitFork, Phone, Brain, Blocks, Bell, Link2, User, CreditCard, Shield, Activity, Database, Cpu, Globe, Home } from 'lucide-react';
-=======
 import { Menu, Plus, Paperclip, Send, Settings as SettingsIcon, Trash2, Edit2, Copy, Share, Volume2, VolumeX, Square, RefreshCcw, Image as ImageIcon, Sparkles, X, Sun, Moon, Type, Code, Monitor, Mic, ChevronDown, ChevronRight, ChevronLeft, Check, Download, Loader2, AlertTriangle, FileText, Video, Music, Box, Archive, Info, Eye, Zap, ShieldCheck, Search, Folder as FolderIcon, BookMarked, FileJson, FileType, FileOutput, GitFork, Phone, Brain, Blocks, Bell, Link2, User, CreditCard, Shield, Activity, Database, Cpu, Globe, Home, MessageSquarePlus } from 'lucide-react';
->>>>>>> 3658308 (update-1.1.0)
 import { motion, AnimatePresence } from 'motion/react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { CodeBlock } from './components/CodeBlock';
 import { MemoryMenu } from './components/MemoryMenu';
-<<<<<<< HEAD
-import { SkillsMenu } from './components/SkillsMenu';
-=======
 import { ExtensionMarketplace } from './components/modals/ExtensionMarketplace';
->>>>>>> 3658308 (update-1.1.0)
 import { ChatHeader } from './components/chat/ChatHeader';
 import { BrandLogo } from './components/chat/BrandLogo';
 import { ChatInput } from './components/chat/ChatInput';
@@ -159,8 +151,6 @@ type Folder = {
   isOpen: boolean;
 };
 
-<<<<<<< HEAD
-=======
 const ADVANCED_TTS_PROMPT = `
 # HUMAN TALKING STYLE CORE
 You must speak exactly like a real emotionally intelligent human. Not robotic. Not perfectly polished. The voice must feel alive, emotionally reactive, rhythmically imperfect, and naturally conversational.
@@ -186,7 +176,6 @@ Relaxed articulation, smooth transitions, conversational contractions (gonna, wa
 # EMOTIONAL LAYERING
 Every line should carry emotional intention (warmth, curiosity, comfort, tension). Make your conversational logic display slight hesitation, reflective thought, or breath-weighted wording naturally. No perfect structure! Let sentences taper off organically. The listener should completely forget they are hearing AI.`;
 
->>>>>>> 3658308 (update-1.1.0)
 const DEFAULT_PROMPT = `You are DROIDE, an advanced AI Assistant with agentic access to this application. 
 
 # CORE CAPABILITIES
@@ -201,15 +190,11 @@ const DEFAULT_PROMPT = `You are DROIDE, an advanced AI Assistant with agentic ac
 6. **File Output**: Use \`save_file\` to save markdown, txt, csv, or code files.
 7. **Read URL**: Use \`read_url_content\` for deep research of URLs.
 
-<<<<<<< HEAD
-Always be direct, helpful, and use Markdown.`;
-=======
 CRITICAL INSTRUCTION FOR ALL TOOLS:
 You MUST invoke the actual API functions via the function calling system. DO NOT fake or simulate tool calls by printing markdown code blocks or making up submission success messages. Always use the structural tool calling feature.
 
 Always be direct, helpful, and use Markdown.
 ${ADVANCED_TTS_PROMPT}`;
->>>>>>> 3658308 (update-1.1.0)
 
 const PERSONAS = [
   { name: 'Droide', prompt: DEFAULT_PROMPT },
@@ -230,11 +215,7 @@ Before each response, internally verify if your current strategy is still the mo
 `;
 
 const DEFAULT_SETTINGS: AppSettings = {
-<<<<<<< HEAD
-  theme: 'system',
-=======
   theme: 'light',
->>>>>>> 3658308 (update-1.1.0)
   systemPrompt: DEFAULT_PROMPT,
   geminiApiKey: '',
   selectedModelId: 'gemini-3-flash-preview',
@@ -264,12 +245,8 @@ const DEFAULT_SETTINGS: AppSettings = {
   nickname: '/dzdev 20',
   workDescription: 'Other',
   chatFont: 'DROIDE Serif',
-<<<<<<< HEAD
-  voice: 'Buttery',
-=======
   chatFontSize: 15,
   voice: 'Female',
->>>>>>> 3658308 (update-1.1.0)
   locationMetadata: true,
   improveDroide: true,
   discoveryEnabled: true,
@@ -279,12 +256,8 @@ const DEFAULT_SETTINGS: AppSettings = {
   aiArtifactsEnabled: false,
   inlineVisualizations: true,
   codeExecution: true,
-<<<<<<< HEAD
   networkEgress: true,
   aiRequirements: []
-=======
-  networkEgress: true
->>>>>>> 3658308 (update-1.1.0)
 };
 
 const BUILT_IN_MODELS = [
@@ -322,15 +295,6 @@ export default function App() {
   const [apiProviders, setApiProviders] = useLocalStorage<ApiProvider[]>('droide_api_providers', []);
   const [customModels, setCustomModels] = useLocalStorage<CustomModel[]>('droide_custom_models', []);
   
-<<<<<<< HEAD
-  const [inputText, setInputText] = useState('');
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [settingsTab, setSettingsTab] = useState<'general' | 'privacy' | 'capabilities' | 'connectors' | 'ai-requirements'>('general');
-  const [isAiConfigOpen, setIsAiConfigOpen] = useState(false);
-  const [isMemoryMenuOpen, setIsMemoryMenuOpen] = useState(false);
-  const [isSkillsMenuOpen, setIsSkillsMenuOpen] = useState(false);
-=======
   const [showSplash, setShowSplash] = useState(true);
   const [fadeSplash, setFadeSplash] = useState(false);
 
@@ -348,15 +312,12 @@ export default function App() {
 
   const [isAiConfigOpen, setIsAiConfigOpen] = useState(false);
   const [isMemoryMenuOpen, setIsMemoryMenuOpen] = useState(false);
->>>>>>> 3658308 (update-1.1.0)
   const [messageVersions, setMessageVersions] = useState<Record<string, number>>({});
   const [isApiConfigOpen, setIsApiConfigOpen] = useState(false);
   const [isCustomModelsOpen, setIsCustomModelsOpen] = useState(false);
   const [isModelSelectorOpen, setIsModelSelectorOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [activeTool, setActiveTool] = useState<string | undefined>();
-<<<<<<< HEAD
-=======
   const [isGlobalLoading, setIsGlobalLoading] = useState(false);
   const [globalLoadingText, setGlobalLoadingText] = useState('Loading...');
 
@@ -370,7 +331,6 @@ export default function App() {
       setIsGlobalLoading(false);
     }
   };
->>>>>>> 3658308 (update-1.1.0)
   const [pendingImages, setPendingImages] = useState<{ mimeType: string, data: string }[]>([]);
   const [errorText, setErrorText] = useState('');
   const [isProcessingFiles, setIsProcessingFiles] = useState(false);
@@ -820,13 +780,6 @@ export default function App() {
   };
 
   const handleCreateSession = () => {
-<<<<<<< HEAD
-    vibrate();
-    const newId = crypto.randomUUID();
-    setCurrentSessionId(newId);
-    setSessions(prev => [{ id: newId, title: 'New Chat', messages: [], updatedAt: Date.now() }, ...prev]);
-    setIsDrawerOpen(false);
-=======
     withGlobalLoading('Creating chat', () => {
       vibrate();
       const newId = crypto.randomUUID();
@@ -834,7 +787,6 @@ export default function App() {
       setSessions(prev => [{ id: newId, title: 'New Chat', messages: [], updatedAt: Date.now() }, ...prev]);
       setIsDrawerOpen(false);
     });
->>>>>>> 3658308 (update-1.1.0)
   };
 
   // --- Feature 8: Vision Upload ---
@@ -986,27 +938,12 @@ export default function App() {
           setPendingImages(prev => [...prev, { name: fileName, data: content, mimeType: mimeType || 'text/plain' }]);
           showToast(`AI generated: ${fileName}`);
           return { success: true, fileName };
-<<<<<<< HEAD
         } else if (call.name === 'report_ai_requirement') {
           const { title, details } = call.args;
           const newReq = { id: Math.random().toString(36).substring(7), title, details, timestamp: Date.now() };
           setSettings(prev => ({ ...prev, aiRequirements: [newReq, ...(prev.aiRequirements || [])] }));
           showToast(`AI posted a requirement: ${title}`);
           return { success: true, message: `Requirement '${title}' posted to Settings > AI REQUIREMENTS.` };
-=======
-        } else if (call.name === 'save_prompt') {
-          const { name, content } = call.args;
-          const newPrompt = { id: Math.random().toString(36).substring(7), name, content, createdAt: Date.now() };
-          setSavedPrompts(prev => [...prev, newPrompt]);
-          showToast(`Persona/Prompt '${name}' saved successfully!`);
-          return { success: true, message: `Saved Persona to Prompt Library natively.` };
-        } else if (call.name === 'install_skill') {
-          const { name, description, standard } = call.args;
-          const newSkill = { id: Math.random().toString(36).substring(7), name, description, standard, installedAt: Date.now() };
-          setSettings(prev => ({ ...prev, installedSkills: [...(prev.installedSkills || []), newSkill] }));
-          showToast(`Skill '${name}' installed natively!`);
-          return { success: true, message: `Installed new skill to app settings.` };
->>>>>>> 3658308 (update-1.1.0)
         } else if (call.name === 'generate_image') {
           const { prompt } = call.args;
           const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=1024&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
@@ -1209,18 +1146,6 @@ export default function App() {
     }
   };
 
-<<<<<<< HEAD
-  // --- Feature 12: Text-to-Speech ---
-  const speakText = (text: string, id: string | null = null) => {
-    vibrate();
-    if (!window.speechSynthesis) {
-        showToast("Text-to-speech not supported");
-        return;
-    }
-
-    if (isSpeakingId === id && id !== null) {
-        window.speechSynthesis.cancel();
-=======
   // Add ref for TTS audio
   const ttsAudioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -1237,24 +1162,11 @@ export default function App() {
     }
 
     if (isSpeakingId === id && id !== null) {
->>>>>>> 3658308 (update-1.1.0)
         setIsSpeakingId(null);
         showToast('Stopped audio');
         return;
     }
 
-<<<<<<< HEAD
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    
-    // Set up events to clear speaking state
-    utterance.onend = () => setIsSpeakingId(null);
-    utterance.onerror = () => setIsSpeakingId(null);
-    
-    if (id) setIsSpeakingId(id);
-    window.speechSynthesis.speak(utterance);
-    showToast('Playing audio...');
-=======
     if (id) setIsSpeakingId(id);
     (window as any).__ds_tts_stopped = false;
 
@@ -1386,7 +1298,6 @@ export default function App() {
       setIsSpeakingId(null);
       showToast('Error generating TTS');
     }
->>>>>>> 3658308 (update-1.1.0)
   };
 
   // --- Feature 17: Format Toolbar Shortcuts ---
@@ -1431,10 +1342,6 @@ export default function App() {
   const wordCount = inputText.trim() ? inputText.trim().split(/\s+/).length : 0;
 
   return (
-<<<<<<< HEAD
-    <div className="fixed inset-0 bg-[var(--bg-main)] text-[var(--text-secondary)] font-sans overflow-hidden flex flex-col w-full h-full">
-      
-=======
     <div className="fixed inset-0 bg-[var(--bg-main)] text-[var(--text-secondary)] font-sans overflow-hidden flex flex-col w-full h-full pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
       
       {/* Full App Preloader / Splash Screen */}
@@ -1472,7 +1379,6 @@ export default function App() {
         </div>
       )}
 
->>>>>>> 3658308 (update-1.1.0)
       {/* Drawer Overlay */}
       {isDrawerOpen && <div id="drawer-overlay" className="fixed inset-0 bg-black/40 z-[100] transition-opacity duration-250 ease-out" onClick={() => setIsDrawerOpen(false)} />}
       
@@ -1484,22 +1390,14 @@ export default function App() {
       )}
 
       {isMemoryMenuOpen && <MemoryMenu settings={settings} setSettings={setSettings} onClose={() => setIsMemoryMenuOpen(false)} vibrate={vibrate} showToast={showToast} />}
-<<<<<<< HEAD
-      {isSkillsMenuOpen && <SkillsMenu settings={settings} setSettings={setSettings} onClose={() => setIsSkillsMenuOpen(false)} vibrate={vibrate} showToast={showToast} />}
-=======
       <ExtensionMarketplace settings={settings} setSettings={setSettings} isOpen={isExtensionMarketplaceOpen} onClose={() => setIsExtensionMarketplaceOpen(false)} vibrate={vibrate} showToast={showToast} />
->>>>>>> 3658308 (update-1.1.0)
 
       {/* Feature 2: Native Android Drawer */}
       <div id="side-drawer" className={`fixed inset-y-0 left-0 w-[85vw] max-w-[320px] bg-[var(--bg-drawer)] shadow-2xl z-[120] transform transition-transform duration-300 ease-out flex flex-col pt-[max(env(safe-area-inset-top),8px)] pb-[max(env(safe-area-inset-bottom),8px)] ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="p-4 pb-3 border-b border-[var(--border-drawer)] flex justify-between items-center relative z-10">
           <div className="flex items-center gap-2">
              <BrandLogo className="w-10 h-10 text-[var(--logo-color)]" />
-<<<<<<< HEAD
-             <h2 className="font-serif text-2xl font-medium tracking-tight bg-gradient-to-r from-[var(--accent)] to-orange-400 bg-clip-text text-transparent">DROIDE</h2>
-=======
              <h2 className="font-serif text-[1.4rem] tracking-tighter text-[var(--logo-color)]">DROIDE</h2>
->>>>>>> 3658308 (update-1.1.0)
           </div>
           <button onClick={() => { setIsDrawerOpen(false); vibrate(); }} className="p-2 -mr-2 hover:bg-[var(--surface-hover)] rounded-full transition-colors sm:hidden active:scale-95">
              <X className="w-6 h-6 text-[var(--text-primary)]" />
@@ -1576,9 +1474,6 @@ export default function App() {
                         {folderSessions.map(s => (
                            <div key={s.id} className="relative group">
                             <button 
-<<<<<<< HEAD
-                              onClick={() => { setCurrentSessionId(s.id); setIsDrawerOpen(false); vibrate(); }}
-=======
                               onClick={() => {
                                 withGlobalLoading('Loading chat', () => {
                                   setCurrentSessionId(s.id); 
@@ -1586,7 +1481,6 @@ export default function App() {
                                   vibrate(); 
                                 });
                               }}
->>>>>>> 3658308 (update-1.1.0)
                               className={`w-full text-left px-4 py-2.5 rounded-xl text-sm transition-colors pr-10
                                 ${s.id === currentSessionId ? 'bg-[var(--surface-hover)] text-[var(--accent)]' : 'text-[var(--text-secondary)] hover:bg-[var(--surface-hover)]'}`}
                             >
@@ -1620,9 +1514,6 @@ export default function App() {
               {filteredSessions.filter(s => !s.folderId).map(s => (
                 <div key={s.id} className="relative group">
                   <button 
-<<<<<<< HEAD
-                    onClick={() => { setCurrentSessionId(s.id); setIsDrawerOpen(false); vibrate(); }}
-=======
                     onClick={() => {
                       withGlobalLoading('Loading chat', () => {
                         setCurrentSessionId(s.id); 
@@ -1630,7 +1521,6 @@ export default function App() {
                         vibrate(); 
                       });
                     }}
->>>>>>> 3658308 (update-1.1.0)
                     className={`w-full text-left px-4 py-2.5 rounded-xl transition-colors pr-12
                       ${s.id === currentSessionId ? 'bg-[var(--surface-hover)] text-[var(--accent)]' : 'text-[var(--text-secondary)] hover:bg-[var(--surface-hover)]'}`}
                   >
@@ -1677,9 +1567,6 @@ export default function App() {
         </div>
 
         <div className={`p-3 border-t border-[var(--border-drawer)] space-y-0.5 transition-all duration-300 ${isSearchFocused || searchQuery ? 'hidden' : 'block'}`}>
-<<<<<<< HEAD
-          <button onClick={() => { setIsMemoryMenuOpen(true); setIsDrawerOpen(false); vibrate(); }} className="w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl hover:bg-[var(--surface-hover)] android-ripple font-medium text-left">
-=======
           <button 
             onClick={() => { 
               withGlobalLoading('Opening Memories', () => {
@@ -1690,19 +1577,10 @@ export default function App() {
             }} 
             className="w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl hover:bg-[var(--surface-hover)] android-ripple font-medium text-left"
           >
->>>>>>> 3658308 (update-1.1.0)
             <Brain className="w-5 h-5 text-[var(--accent)]" />
             <span>Memory & Persona</span>
           </button>
           
-<<<<<<< HEAD
-          <button onClick={() => { setIsSkillsMenuOpen(true); setIsDrawerOpen(false); vibrate(); }} className="w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl hover:bg-[var(--surface-hover)] android-ripple font-medium text-left">
-            <Blocks className="w-5 h-5 text-[var(--accent)]" />
-            <span>Skills & Integrations</span>
-          </button>
-
-          <button onClick={() => { setIsAiConfigOpen(true); setIsDrawerOpen(false); vibrate(); }} className="w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl hover:bg-[var(--surface-hover)] android-ripple font-medium text-left">
-=======
           <button onClick={() => { 
             withGlobalLoading('Opening Marketplace', () => {
               setIsExtensionMarketplaceOpen(true); 
@@ -1724,7 +1602,6 @@ export default function App() {
             }} 
             className="w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl hover:bg-[var(--surface-hover)] android-ripple font-medium text-left"
           >
->>>>>>> 3658308 (update-1.1.0)
             <Zap className="w-5 h-5 text-blue-500" />
             <span>AI Config</span>
           </button>
@@ -1732,11 +1609,7 @@ export default function App() {
           <div className="flex items-center justify-between px-4 py-2.5 mt-1">
             <div className="flex items-center space-x-3">
               {settings.theme === 'dark' ? <Moon className="w-5 h-5 text-[var(--text-muted)]" /> : <Sun className="w-5 h-5 text-[var(--text-muted)]" />}
-<<<<<<< HEAD
-              <span className="font-medium">Dark Theme</span>
-=======
               <span className="font-medium">Light/Dark Theme</span>
->>>>>>> 3658308 (update-1.1.0)
             </div>
             <button onClick={() => setSettings(p => ({...p, theme: p.theme === 'dark' ? 'light' : 'dark'}))} className={`w-10 h-6 rounded-full transition-colors relative ${settings.theme === 'dark' ? 'bg-[var(--accent)]' : 'bg-gray-300'}`}>
               <div className={`w-4 h-4 rounded-full bg-white absolute top-1 transition-transform ${settings.theme === 'dark' ? 'translate-x-5' : 'translate-x-1'}`}></div>
@@ -1744,9 +1617,6 @@ export default function App() {
           </div>
 
           <button 
-<<<<<<< HEAD
-            onClick={() => { setIsSettingsOpen(true); setIsDrawerOpen(false); vibrate(); }}
-=======
             onClick={() => { 
               vibrate();
               window.open('https://chat.whatsapp.com/CHpvBf4Mt925AmmrMVFd9v', '_blank');
@@ -1765,7 +1635,6 @@ export default function App() {
                 vibrate();
               });
             }}
->>>>>>> 3658308 (update-1.1.0)
             className="w-full flex items-center space-x-3 px-4 py-2.5 mt-1 rounded-xl hover:bg-[var(--surface-hover)] bg-[var(--surface)] border border-[var(--surface-border)] shadow-sm transition-all text-left"
           >
             <div className="w-9 h-9 rounded-full border border-[var(--surface-border)] flex items-center justify-center bg-[var(--surface-hover)] overflow-hidden shrink-0">
@@ -1807,25 +1676,17 @@ export default function App() {
 
       <SettingsModal 
         isOpen={isSettingsOpen}
-<<<<<<< HEAD
-        onClose={() => setIsSettingsOpen(false)}
-=======
         onClose={() => {
           withGlobalLoading('Saving Changes', () => {
              setIsSettingsOpen(false);
           });
         }}
->>>>>>> 3658308 (update-1.1.0)
         settings={settings}
         setSettings={setSettings}
         settingsTab={settingsTab as any}
         setSettingsTab={setSettingsTab as any}
         vibrate={vibrate}
         onExportData={handleExportData}
-<<<<<<< HEAD
-        onManageMemories={() => setIsManageMemoriesOpen(true)}
-        onManageSharedChats={() => setIsManageSharedChatsOpen(true)}
-=======
         onManageMemories={() => {
           withGlobalLoading('Loading Memories', () => {
              setIsManageMemoriesOpen(true)
@@ -1842,7 +1703,6 @@ export default function App() {
             setIsExtensionMarketplaceOpen(true); 
           });
         }}
->>>>>>> 3658308 (update-1.1.0)
       />
 
       {/* Memory Management Modal */}
@@ -2283,16 +2143,12 @@ export default function App() {
       <div id="main-content" className="flex-1 flex flex-col w-full h-full relative z-10 pt-[max(env(safe-area-inset-top),4px)] pb-[max(env(safe-area-inset-bottom),4px)] overflow-hidden">
         <ChatHeader 
           onMenuClick={() => { setIsDrawerOpen(true); vibrate(); }}
-<<<<<<< HEAD
-          onModelSelectorClick={() => { setIsModelSelectorOpen(true); vibrate(); }}
-=======
           onModelSelectorClick={() => { 
             withGlobalLoading('Opening Model Selector', () => {
               setIsModelSelectorOpen(true); 
               vibrate(); 
             });
           }}
->>>>>>> 3658308 (update-1.1.0)
           onNewChatClick={handleCreateSession}
           onExportClick={(type) => {
             if (type === 'pdf') exportToPDF();
@@ -2368,13 +2224,8 @@ export default function App() {
                   <div className={`relative text-base leading-[1.6] selectable-text w-full
                     ${message.role === 'user' 
                       ? (message.id === editingMessageId 
-<<<<<<< HEAD
-                        ? 'bg-[var(--surface)] border border-[var(--accent)] rounded-2xl sm:w-[500px] ml-auto px-4 py-3' 
-                        : 'bg-[var(--surface)] text-[var(--text-primary)] rounded-3xl rounded-tr-sm max-w-[85%] ml-auto px-4 py-3 shadow-md border border-[var(--surface-border)]') 
-=======
                         ? 'bg-[var(--bubble-user)] border border-[var(--accent)] rounded-2xl sm:w-[500px] ml-auto px-4 py-3' 
                         : 'bg-[var(--bubble-user)] text-[var(--text-primary)] rounded-2xl max-w-[85%] ml-auto px-4 py-3 border border-[var(--surface-border)]') 
->>>>>>> 3658308 (update-1.1.0)
                       : 'text-[var(--text-secondary)] w-full px-1 py-2'}`}>
                     
                     {message.edits && message.edits.length > 0 && (
@@ -2409,17 +2260,12 @@ export default function App() {
                     )}
 
                     <div 
-<<<<<<< HEAD
-                      className={message.role === 'assistant' ? 'markdown-body text-[var(--text-secondary)] break-words w-full' : 'whitespace-pre-wrap break-words'}
-                      style={{ fontFamily: getChatFontFamily() }}
-=======
                       className={message.role === 'assistant' ? 'prose dark:prose-invert max-w-none prose-p:my-2 prose-headings:mb-3 prose-headings:mt-6 text-[var(--text-secondary)] break-words w-full overflow-x-hidden' : 'whitespace-pre-wrap break-words'}
                       style={{ 
                         fontFamily: getChatFontFamily(), 
                         fontSize: settings.chatFontSize ? `${settings.chatFontSize}px` : '15px',
                         lineHeight: 1.6
                       }}
->>>>>>> 3658308 (update-1.1.0)
                     >
                       {message.role === 'assistant' ? (
                         (!message.content && message.isStreaming) ? (
@@ -2543,16 +2389,12 @@ export default function App() {
           onStop={handleStop}
           onVoice={handleVoice}
           onFileClick={() => { vibrate(); fileInputRef.current?.click(); }}
-<<<<<<< HEAD
-          onOpenPromptLibrary={() => { vibrate(); setIsPromptLibraryOpen(true); }}
-=======
           onOpenPromptLibrary={() => { 
             withGlobalLoading('Opening Prompt Library', () => {
               vibrate(); 
               setIsPromptLibraryOpen(true); 
             });
           }}
->>>>>>> 3658308 (update-1.1.0)
           isGenerating={isGenerating}
           pendingImages={pendingImages}
           removePendingImage={(i) => setPendingImages(prev => prev.filter((_, idx) => idx !== i))}

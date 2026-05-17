@@ -1,16 +1,4 @@
 @import "tailwindcss";
-<<<<<<< HEAD
-
-@theme {
-  --font-sans: "Roboto", "Inter", system-ui, sans-serif;
-  --font-serif: "Playfair Display", serif;
-  --font-mono: "JetBrains Mono", monospace;
-
-  /* Anthropic Claude Inspired Palette - DEEP VERSION */
-  --accent: #cc5b33; /* Richer Terracotta */
-  --accent-light: #f5d4c9;
-  --accent-dark: #a64a29;
-=======
 @plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -24,42 +12,26 @@
   --accent: #d97757; 
   --accent-light: #f5d4c9;
   --accent-dark: #b85b3d;
->>>>>>> 3658308 (update-1.1.0)
 
   --bg-main: #f3ebd8; /* Deeper Parchment */
   --bg-drawer: #e9e0cd;
   --surface: #f9f4e8;
-<<<<<<< HEAD
-  --surface-hover: #e2d9c3;
-=======
   --surface-hover: #e6dfcc;
->>>>>>> 3658308 (update-1.1.0)
   --surface-variant: #dfd6c0;
   --surface-border: #d4ccb8;
   --border-drawer: #d4ccb8;
   --border-primary: #d4ccb8;
-<<<<<<< HEAD
-  --text-primary: #1a1614; /* Deep Brown-Charcoal */
-  --text-secondary: #5e5a52;
-  --text-muted: #8a8579;
-  --logo-color: #cc5b33;
-=======
   --text-primary: #1a1614; 
   --text-secondary: #5e5a52;
   --text-muted: #8a8579;
   --logo-color: #d97757;
->>>>>>> 3658308 (update-1.1.0)
   
   --success: #1e6b41;
   --danger: #b93e3e;
   --warning: #c27a1c;
   
   --bubble-user: #e9e0cd;
-<<<<<<< HEAD
-  --bubble-assistant: #fcfaf5;
-=======
   --bubble-assistant: #f3ebd8;
->>>>>>> 3658308 (update-1.1.0)
   
   --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.06);
   --shadow-md: 0 4px 14px rgba(26, 22, 20, 0.1);
@@ -68,14 +40,6 @@
 
 @layer base {
   :root {
-<<<<<<< HEAD
-    font-size: 13px;
-    --bg-main: #f3ebd8;
-    --text-primary: #1a1614;
-    --text-secondary: #5e5a52;
-    --accent: #cc5b33;
-    --caret-color: #1a1614;
-=======
     font-size: 14px;
     --bg-main: #f3ebd8; /* Previously white, now tan */
     --surface: #f9f5ec; /* 50% lighter than tan */
@@ -86,7 +50,6 @@
     --text-secondary: #6e6e6e;
     --accent: #da7756;
     --caret-color: #da7756;
->>>>>>> 3658308 (update-1.1.0)
   }
 
   .dark {
@@ -105,17 +68,6 @@
     --logo-color: #d97757;
     
     --accent: #d97757;
-<<<<<<< HEAD
-    --accent-light: #f5d4c9;
-    --accent-dark: #b85b3d;
-
-    --bubble-user: #2d2a27;
-    --bubble-assistant: #1a1816;
-    
-    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.4);
-    
-    --caret-color: #dcd8d0;
-=======
     --accent-light: #4a281d;
     --accent-dark: #f09577;
 
@@ -125,7 +77,6 @@
     --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.4);
     
     --caret-color: #d97757;
->>>>>>> 3658308 (update-1.1.0)
   }
 
   * {
@@ -136,19 +87,13 @@
   body {
     background-color: var(--bg-main);
     color: var(--text-primary);
-<<<<<<< HEAD
-    font-size: 13px;
-=======
     font-size: 14px;
->>>>>>> 3658308 (update-1.1.0)
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     overscroll-behavior-y: none;
     -webkit-user-select: none;
     user-select: none;
-<<<<<<< HEAD
-=======
     width: 100vw;
     height: 100dvh;
     margin: 0;
@@ -161,7 +106,6 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
->>>>>>> 3658308 (update-1.1.0)
   }
 }
 
@@ -215,8 +159,6 @@
   animation: cursor-blink 1s ease-in-out infinite;
 }
 
-<<<<<<< HEAD
-=======
 ::selection {
   background: var(--accent-light);
   color: var(--text-primary);
@@ -239,4 +181,3 @@
   color: var(--text-primary) !important;
 }
 
->>>>>>> 3658308 (update-1.1.0)

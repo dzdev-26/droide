@@ -22,11 +22,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
   setIsExportMenuOpen
 }) => {
   return (
-<<<<<<< HEAD
-    <header className="flex items-center justify-between px-2 h-14 shrink-0 bg-transparent z-20 top-0 relative">
-=======
     <header className="flex items-center justify-between px-2 h-14 shrink-0 bg-[var(--surface)] z-20 top-0 relative">
->>>>>>> 3658308 (update-1.1.0)
       <button onClick={onMenuClick} className="p-3 bg-transparent rounded-full transition-colors android-ripple" aria-label="Open menu">
         <Menu className="w-6 h-6 text-[var(--text-primary)]" />
       </button>
