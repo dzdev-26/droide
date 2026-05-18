@@ -2,9 +2,9 @@
 
 <img width="400" alt="Droide App" src="assets/droide-banner.jpg" />
 
-# <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIzIiB5PSIxMSIgd2lkdGg9IjE4IiBoZWlnaHQ9IjEwIiByeD0iMiIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iNSIgcj0iMiIvPjxwYXRoIGQ9Ik0xMiA3djQiLz48Y2lyY2xlIGN4PSI4IiBjeT0iMTYiIHI9IjEuMiIgZmlsbD0iIzdjM2FlZCIgc3Ryb2tlPSIjN2MzYWVkIi8+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMS4yIiBmaWxsPSIjN2MzYWVkIiBzdHJva2U9IiM3YzNhZWQiLz48cGF0aCBkPSJNOSAxOWg2Ii8+PC9zdmc+" width="28" height="28" style="vertical-align:middle" alt="robot"> Droide — Advanced AI Assistant
+# 🤖 Droide — Advanced AI Assistant
 
-**Modern &nbsp;·&nbsp; Mobile-First &nbsp;·&nbsp; Multi-Provider &nbsp;·&nbsp; Agentic**
+**Modern • Mobile-First • Multi-Provider • Agentic**
 
 [![Build APK](https://github.com/yourusername/droid-apk/actions/workflows/build-apk.yml/badge.svg)](https://github.com/yourusername/droid-apk/actions/workflows/build-apk.yml)
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20Web-blue)
@@ -17,7 +17,7 @@
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48bGluZSB4MT0iOSIgeTE9IjYiIHgyPSIyMCIgeTI9IjYiLz48bGluZSB4MT0iOSIgeTE9IjEyIiB4Mj0iMjAiIHkyPSIxMiIvPjxsaW5lIHgxPSI5IiB5MT0iMTgiIHgyPSIyMCIgeTI9IjE4Ii8+PGNpcmNsZSBjeD0iNCIgY3k9IjYiIHI9IjEuNSIgZmlsbD0iIzdjM2FlZCIgc3Ryb2tlPSIjN2MzYWVkIi8+PGNpcmNsZSBjeD0iNCIgY3k9IjEyIiByPSIxLjUiIGZpbGw9IiM3YzNhZWQiIHN0cm9rZT0iIzdjM2FlZCIvPjxjaXJjbGUgY3g9IjQiIGN5PSIxOCIgcj0iMS41IiBmaWxsPSIjN2MzYWVkIiBzdHJva2U9IiM3YzNhZWQiLz48L3N2Zz4=" width="22" height="22" style="vertical-align:middle" alt="list"> Table of Contents
+## 📋 Table of Contents
 
 - [Overview](#-overview)
 - [Features](#-features)
@@ -43,22 +43,22 @@
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWdvbiBwb2ludHM9IjEyIDIgMTUuMDkgOC4yNiAyMiA5LjI3IDE3IDE0LjE0IDE4LjE4IDIxLjAyIDEyIDE3Ljc3IDUuODIgMjEuMDIgNyAxNC4xNCAyIDkuMjcgOC45MSA4LjI2IDEyIDIiIGZpbGw9IiM3YzNhZWQiIHN0cm9rZT0iIzdjM2FlZCIvPjwvc3ZnPg==" width="22" height="22" style="vertical-align:middle" alt="star"> Overview
+## 🌟 Overview
 
 **Droide** is a next-generation AI assistant built for people who want the power of LLMs in a beautiful, fast, and truly capable mobile app. It goes far beyond a simple chat wrapper:
 
-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTAgMTNhNSA1IDAgMCAwIDcuNTQuNTRsMy0zYTUgNSAwIDAgMC03LjA3LTcuMDdsLTEuNzIgMS43MSIvPjxwYXRoIGQ9Ik0xNCAxMWE1IDUgMCAwIDAtNy41NC0uNTRsLTMgM2E1IDUgMCAwIDAgNy4wNyA3LjA3bDEuNzEtMS43MSIvPjwvc3ZnPg==" width="16" height="16" style="vertical-align:middle" alt="link"> Connect to **any AI provider** — Gemini, OpenAI, OpenRouter, Ollama, or any custom OpenAI-compatible endpoint
-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTQuNyA2LjNhMSAxIDAgMCAwIDAgMS40bDEuNiAxLjZhMSAxIDAgMCAwIDEuNCAwbDMuNzctMy43N2E2IDYgMCAwIDEtNy45NCA3Ljk0bC02LjkxIDYuOTFhMi4xMiAyLjEyIDAgMCAxLTMtM2w2LjkxLTYuOTFhNiA2IDAgMCAxIDcuOTQtNy45NGwtMy43NiAzLjc2eiIvPjwvc3ZnPg==" width="16" height="16" style="vertical-align:middle" alt="tool"> True **agentic capabilities** — execute code, search the web, generate images, fetch weather, browse URLs, manage files, and more
-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNOS41IDJBMi41IDIuNSAwIDAgMSAxMiA0LjV2MTVhMi41IDIuNSAwIDAgMS00Ljk2LS40NiAyLjUgMi41IDAgMCAxLTIuOTYtMy4wOCAzIDMgMCAwIDEtLjM0LTUuNTggMi41IDIuNSAwIDAgMSAxLjMyLTQuMjQgMi41IDIuNSAwIDAgMSAxLjk4LTNBMi41IDIuNSAwIDAgMSA5LjUgMnoiLz48cGF0aCBkPSJNMTQuNSAyQTIuNSAyLjUgMCAwIDAgMTIgNC41djE1YTIuNSAyLjUgMCAwIDAgNC45Ni0uNDYgMi41IDIuNSAwIDAgMCAyLjk2LTMuMDggMyAzIDAgMCAwIC4zNC01LjU4IDIuNSAyLjUgMCAwIDAtMS4zMi00LjI0IDIuNSAyLjUgMCAwIDAtMS45OC0zQTIuNSAyLjUgMCAwIDAgMTQuNSAyeiIvPjwvc3ZnPg==" width="16" height="16" style="vertical-align:middle" alt="brain"> **Persistent memory** — the AI learns and remembers facts about you across sessions
-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48bGluZSB4MT0iMTYuNSIgeTE9IjkuNCIgeDI9IjcuNSIgeTI9IjQuMjEiLz48cGF0aCBkPSJNMjEgMTZWOGEyIDIgMCAwIDAtMS0xLjczbC03LTRhMiAyIDAgMCAwLTIgMGwtNyA0QTIgMiAwIDAgMCAzIDh2OGEyIDIgMCAwIDAgMSAxLjczbDcgNGEyIDIgMCAwIDAgMiAwbDctNEEyIDIgMCAwIDAgMjEgMTZ6Ii8+PHBvbHlsaW5lIHBvaW50cz0iMy4yNyA2Ljk2IDEyIDEyLjAxIDIwLjczIDYuOTYiLz48bGluZSB4MT0iMTIiIHkxPSIyMi4wOCIgeDI9IjEyIiB5Mj0iMTIiLz48L3N2Zz4=" width="16" height="16" style="vertical-align:middle" alt="package"> **Skills & MCP marketplace** — install hundreds of Model Context Protocol extensions
-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSI1IiB5PSIyIiB3aWR0aD0iMTQiIGhlaWdodD0iMjAiIHJ4PSIyIiByeT0iMiIvPjxsaW5lIHgxPSIxMiIgeTE9IjE4IiB4Mj0iMTIuMDEiIHkyPSIxOCIvPjwvc3ZnPg==" width="16" height="16" style="vertical-align:middle" alt="smartphone"> **Native Android APK** — compiled with Capacitor for a smooth, native feel
-- <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSIxNiAxOCAyMiAxMiAxNiA2Ii8+PHBvbHlsaW5lIHBvaW50cz0iOCA2IDIgMTIgOCAxOCIvPjwvc3ZnPg==" width="16" height="16" style="vertical-align:middle" alt="code"> **Artifacts** — render live interactive HTML, SVG, and Mermaid diagrams inline in chat
+- 🔗 Connect to **any AI provider** — Gemini, OpenAI, OpenRouter, Ollama, or any custom OpenAI-compatible endpoint
+- 🛠️ True **agentic capabilities** — execute code, search the web, generate images, fetch weather, browse URLs, manage files, and more
+- 🧠 **Persistent memory** — the AI learns and remembers facts about you across sessions
+- 📦 **Skills & MCP marketplace** — install hundreds of Model Context Protocol extensions
+- 📱 **Native Android APK** — compiled with Capacitor for a smooth, native feel
+- 🎨 **Artifacts** — render live interactive HTML, SVG, and Mermaid diagrams inline in chat
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWdvbiBwb2ludHM9IjEzIDIgMyAxNCAxMiAxNCAxMSAyMiAyMSAxMCAxMiAxMCAxMyAyIiBmaWxsPSIjN2MzYWVkIiBzdHJva2U9IiM3YzNhZWQiLz48L3N2Zz4=" width="22" height="22" style="vertical-align:middle" alt="zap"> Features
+## ✨ Features
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjEgMTVhMiAyIDAgMCAxLTIgMkg3bC00IDRWNWEyIDIgMCAwIDEgMi0yaDE0YTIgMiAwIDAgMSAyIDJ6Ii8+PC9zdmc+" width="18" height="18" style="vertical-align:middle" alt="message"> Core Chat
+### 💬 Core Chat
 
 | Feature | Description |
 |---|---|
@@ -79,7 +79,7 @@
 
 ---
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTQuNyA2LjNhMSAxIDAgMCAwIDAgMS40bDEuNiAxLjZhMSAxIDAgMCAwIDEuNCAwbDMuNzctMy43N2E2IDYgMCAwIDEtNy45NCA3Ljk0bC02LjkxIDYuOTFhMi4xMiAyLjEyIDAgMCAxLTMtM2w2LjkxLTYuOTFhNiA2IDAgMCAxIDcuOTQtNy45NGwtMy43NiAzLjc2eiIvPjwvc3ZnPg==" width="18" height="18" style="vertical-align:middle" alt="tool"> Agentic Tools
+### 🛠️ Agentic Tools
 
 Droide uses Google Gemini's native function-calling API to execute real tools — not simulated responses:
 
@@ -104,7 +104,7 @@ Droide uses Google Gemini's native function-calling API to execute real tools �
 
 ---
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSIxNiAxOCAyMiAxMiAxNiA2Ii8+PHBvbHlsaW5lIHBvaW50cz0iOCA2IDIgMTIgOCAxOCIvPjwvc3ZnPg==" width="18" height="18" style="vertical-align:middle" alt="code"> Artifacts & Code
+### 🎨 Artifacts & Code
 
 - **HTML Artifacts** — The AI can generate full interactive HTML + Tailwind CSS pages rendered live inside a sandboxed iframe in chat
 - **SVG Illustrations** — Inline vector graphics rendered directly in the message
@@ -116,7 +116,7 @@ Droide uses Google Gemini's native function-calling API to execute real tools �
 
 ---
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNOS41IDJBMi41IDIuNSAwIDAgMSAxMiA0LjV2MTVhMi41IDIuNSAwIDAgMS00Ljk2LS40NiAyLjUgMi41IDAgMCAxLTIuOTYtMy4wOCAzIDMgMCAwIDEtLjM0LTUuNTggMi41IDIuNSAwIDAgMSAxLjMyLTQuMjQgMi41IDIuNSAwIDAgMSAxLjk4LTNBMi41IDIuNSAwIDAgMSA5LjUgMnoiLz48cGF0aCBkPSJNMTQuNSAyQTIuNSAyLjUgMCAwIDAgMTIgNC41djE1YTIuNSAyLjUgMCAwIDAgNC45Ni0uNDYgMi41IDIuNSAwIDAgMCAyLjk2LTMuMDggMyAzIDAgMCAwIC4zNC01LjU4IDIuNSAyLjUgMCAwIDAtMS4zMi00LjI0IDIuNSAyLjUgMCAwIDAtMS45OC0zQTIuNSAyLjUgMCAwIDAgMTQuNSAyeiIvPjwvc3ZnPg==" width="18" height="18" style="vertical-align:middle" alt="brain"> AI & Model Settings
+### 🧠 AI & Model Settings
 
 - **Google Gemini** — Primary AI provider with full streaming, function calling, and vision support
 - **Custom API Providers** — Add any OpenAI-compatible endpoint (OpenRouter, Ollama, LM Studio, Together AI, etc.) with name, base URL, and API key
@@ -134,7 +134,7 @@ Droide uses Google Gemini's native function-calling API to execute real tools �
 
 ---
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZWxsaXBzZSBjeD0iMTIiIGN5PSI1IiByeD0iOSIgcnk9IjMiLz48cGF0aCBkPSJNMjEgMTJjMCAxLjY2LTQgMy05IDNzLTktMS4zNC05LTMiLz48cGF0aCBkPSJNMyA1djE0YzAgMS42NiA0IDMgOSAzczktMS4zNCA5LTNWNSIvPjwvc3ZnPg==" width="18" height="18" style="vertical-align:middle" alt="memory"> Memory & Personalization
+### 🧩 Memory & Personalization
 
 - **Persistent Memory** — The AI uses `manage_memory` to remember facts about you (name, preferences, work context) across all sessions stored in IndexedDB
 - **Memory Manager UI** — View, search, and delete all stored memories from the Memory Menu
@@ -146,7 +146,7 @@ Droide uses Google Gemini's native function-calling API to execute real tools �
 
 ---
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJ2LTUiLz48cGF0aCBkPSJNOSA4VjIiLz48cGF0aCBkPSJNMTUgOFYyIi8+PHBhdGggZD0iTTE4IDh2NWE0IDQgMCAwIDEtNCA0aC00YTQgNCAwIDAgMS00LTRWOHoiLz48L3N2Zz4=" width="18" height="18" style="vertical-align:middle" alt="plug"> Skills & Extensions (MCP)
+### 🔌 Skills & Extensions (MCP)
 
 - **Extension Marketplace** — Browse and install hundreds of curated MCP (Model Context Protocol) server integrations
 - **Categories** — Developer Tools, Databases, Cloud Providers, Productivity, Communication, Finance, Analytics, Security, AI & ML, E-commerce, CRM, Design, DevOps, and more
@@ -157,7 +157,7 @@ Droide uses Google Gemini's native function-calling API to execute real tools �
 
 ---
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSI1IiB5PSIyIiB3aWR0aD0iMTQiIGhlaWdodD0iMjAiIHJ4PSIyIiByeT0iMiIvPjxsaW5lIHgxPSIxMiIgeTE9IjE4IiB4Mj0iMTIuMDEiIHkyPSIxOCIvPjwvc3ZnPg==" width="18" height="18" style="vertical-align:middle" alt="smartphone"> UI/UX & Accessibility
+### 📱 UI/UX & Accessibility
 
 - **Mobile-First Design** — Designed from scratch for small screens with native-grade touch targets
 - **Framer Motion Animations** — Smooth entrance/exit animations throughout the entire app
@@ -173,7 +173,7 @@ Droide uses Google Gemini's native function-calling API to execute real tools �
 
 ---
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNSAxNmE3IDcgMCAwIDEgMTQgMCIvPjxsaW5lIHgxPSIxMiIgeTE9IjE2IiB4Mj0iMTIiIHkyPSIyMCIvPjxsaW5lIHgxPSI5IiB5MT0iMjAiIHgyPSIxNSIgeTI9IjIwIi8+PGNpcmNsZSBjeD0iOC41IiBjeT0iMTEiIHI9IjEiIGZpbGw9IiM3YzNhZWQiIHN0cm9rZT0iIzdjM2FlZCIvPjxjaXJjbGUgY3g9IjE1LjUiIGN5PSIxMSIgcj0iMSIgZmlsbD0iIzdjM2FlZCIgc3Ryb2tlPSIjN2MzYWVkIi8+PC9zdmc+" width="18" height="18" style="vertical-align:middle" alt="android"> Native Android Features
+### 🤖 Native Android Features
 
 - **Capacitor Integration** — Web app wrapped as a native Android APK using Capacitor v8
 - **Splash Screen** — Custom branded splash screen with immersive full-screen mode
@@ -184,7 +184,7 @@ Droide uses Google Gemini's native function-calling API to execute real tools �
 
 ---
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6Ii8+PC9zdmc+" width="18" height="18" style="vertical-align:middle" alt="shield"> Data & Privacy
+### 🔒 Data & Privacy
 
 - **Local-First Storage** — All sessions, settings, and memories are stored locally in the browser's `localStorage` and `IndexedDB` — no account required
 - **Data Export** — Export all your chat data and settings as a JSON file
@@ -196,7 +196,7 @@ Droide uses Google Gemini's native function-calling API to execute real tools �
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIzIi8+PHBhdGggZD0iTTE5LjQgMTVhMS42NSAxLjY1IDAgMCAwIC4zMyAxLjgybC4wNi4wNmEyIDIgMCAwIDEgMCAyLjgzIDIgMiAwIDAgMS0yLjgzIDBsLS4wNi0uMDZhMS42NSAxLjY1IDAgMCAwLTEuODItLjMzIDEuNjUgMS42NSAwIDAgMC0xIDEuNTFWMjFhMiAyIDAgMCAxLTIgMiAyIDIgMCAwIDEtMi0ydi0uMDlBMS42NSAxLjY1IDAgMCAwIDkgMTkuNGExLjY1IDEuNjUgMCAwIDAtMS44Mi4zM2wtLjA2LjA2YTIgMiAwIDAgMS0yLjgzIDAgMiAyIDAgMCAxIDAtMi44M2wuMDYtLjA2QTEuNjUgMS42NSAwIDAgMCA0LjY4IDE1YTEuNjUgMS42NSAwIDAgMC0xLjUxLTFIM2EyIDIgMCAwIDEtMi0yIDIgMiAwIDAgMSAyLTJoLjA5QTEuNjUgMS42NSAwIDAgMCA0LjYgOWExLjY1IDEuNjUgMCAwIDAtLjMzLTEuODJsLS4wNi0uMDZhMiAyIDAgMCAxIDAtMi44MyAyIDIgMCAwIDEgMi44MyAwbC4wNi4wNkExLjY1IDEuNjUgMCAwIDAgOSA0LjY4YTEuNjUgMS42NSAwIDAgMCAxLTEuNTFWM2EyIDIgMCAwIDEgMi0yIDIgMiAwIDAgMSAyIDJ2LjA5YTEuNjUgMS42NSAwIDAgMCAxIDEuNTEgMS42NSAxLjY1IDAgMCAwIDEuODItLjMzbC4wNi0uMDZhMiAyIDAgMCAxIDIuODMgMCAyIDIgMCAwIDEgMCAyLjgzbC0uMDYuMDZBMS42NSAxLjY1IDAgMCAwIDE5LjQgOWExLjY1IDEuNjUgMCAwIDAgMS41MSAxSDIxYTIgMiAwIDAgMSAyIDIgMiAyIDAgMCAxLTIgMmgtLjA5YTEuNjUgMS42NSAwIDAgMC0xLjUxIDF6Ii8+PC9zdmc+" width="22" height="22" style="vertical-align:middle" alt="settings"> Tech Stack
+## 🔧 Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -217,7 +217,7 @@ Droide uses Google Gemini's native function-calling API to execute real tools �
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48bGluZSB4MT0iMTYuNSIgeTE9IjkuNCIgeDI9IjcuNSIgeTI9IjQuMjEiLz48cGF0aCBkPSJNMjEgMTZWOGEyIDIgMCAwIDAtMS0xLjczbC03LTRhMiAyIDAgMCAwLTIgMGwtNyA0QTIgMiAwIDAgMCAzIDh2OGEyIDIgMCAwIDAgMSAxLjczbDcgNGEyIDIgMCAwIDAgMiAwbDctNEEyIDIgMCAwIDAgMjEgMTZ6Ii8+PHBvbHlsaW5lIHBvaW50cz0iMy4yNyA2Ljk2IDEyIDEyLjAxIDIwLjczIDYuOTYiLz48bGluZSB4MT0iMTIiIHkxPSIyMi4wOCIgeDI9IjEyIiB5Mj0iMTIiLz48L3N2Zz4=" width="22" height="22" style="vertical-align:middle" alt="package"> Prerequisites
+## 📦 Prerequisites
 
 Before you begin, make sure you have the following installed:
 
@@ -233,7 +233,7 @@ Before you begin, make sure you have the following installed:
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNC41IDE2LjVjLTEuNSAxLjI2LTIgNS0yIDVzMy43NC0uNSA1LTJjLjcxLS44NC43LTIuMTMtLjA5LTIuOTFhMi4xOCAyLjE4IDAgMCAwLTIuOTEtLjA5eiIvPjxwYXRoIGQ9Im0xMiAxNS0zLTNhMjIgMjIgMCAwIDEgMi0zLjk1QTEyLjg4IDEyLjg4IDAgMCAxIDIyIDJjMCAyLjcyLS43OCA3LjUtNiAxMWEyMi4zNSAyMi4zNSAwIDAgMS00IDJ6Ii8+PHBhdGggZD0iTTkgMTJINHMuNTUtMy4wMyAyLTRjMS42Mi0xLjA4IDUgMCA1IDAiLz48cGF0aCBkPSJNMTIgMTV2NXMzLjAzLS41NSA0LTJjMS4wOC0xLjYyIDAtNSAwLTUiLz48L3N2Zz4=" width="22" height="22" style="vertical-align:middle" alt="rocket"> Installation & Local Setup
+## 🚀 Installation & Local Setup
 
 ### 1. Clone the repository
 
@@ -281,7 +281,7 @@ The production build will be output to the `dist/` folder.
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSI1IiB5PSIyIiB3aWR0aD0iMTQiIGhlaWdodD0iMjAiIHJ4PSIyIiByeT0iMiIvPjxsaW5lIHgxPSIxMiIgeTE9IjE4IiB4Mj0iMTIuMDEiIHkyPSIxOCIvPjwvc3ZnPg==" width="22" height="22" style="vertical-align:middle" alt="smartphone"> Building the APK
+## 📱 Building the APK
 
 Droide uses **Capacitor** to package the web app as a native Android APK. There are two methods:
 
@@ -392,7 +392,7 @@ keytool -genkey -v -keystore droide-release.jks \
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIzIi8+PHBhdGggZD0iTTE5LjQgMTVhMS42NSAxLjY1IDAgMCAwIC4zMyAxLjgybC4wNi4wNmEyIDIgMCAwIDEgMCAyLjgzIDIgMiAwIDAgMS0yLjgzIDBsLS4wNi0uMDZhMS42NSAxLjY1IDAgMCAwLTEuODItLjMzIDEuNjUgMS42NSAwIDAgMC0xIDEuNTFWMjFhMiAyIDAgMCAxLTIgMiAyIDIgMCAwIDEtMi0ydi0uMDlBMS42NSAxLjY1IDAgMCAwIDkgMTkuNGExLjY1IDEuNjUgMCAwIDAtMS44Mi4zM2wtLjA2LjA2YTIgMiAwIDAgMS0yLjgzIDAgMiAyIDAgMCAxIDAtMi44M2wuMDYtLjA2QTEuNjUgMS42NSAwIDAgMCA0LjY4IDE1YTEuNjUgMS42NSAwIDAgMC0xLjUxLTFIM2EyIDIgMCAwIDEtMi0yIDIgMiAwIDAgMSAyLTJoLjA5QTEuNjUgMS42NSAwIDAgMCA0LjYgOWExLjY1IDEuNjUgMCAwIDAtLjMzLTEuODJsLS4wNi0uMDZhMiAyIDAgMCAxIDAtMi44MyAyIDIgMCAwIDEgMi44MyAwbC4wNi4wNkExLjY1IDEuNjUgMCAwIDAgOSA0LjY4YTEuNjUgMS42NSAwIDAgMCAxLTEuNTFWM2EyIDIgMCAwIDEgMi0yIDIgMiAwIDAgMSAyIDJ2LjA5YTEuNjUgMS42NSAwIDAgMCAxIDEuNTEgMS42NSAxLjY1IDAgMCAwIDEuODItLjMzbC4wNi0uMDZhMiAyIDAgMCAxIDIuODMgMCAyIDIgMCAwIDEgMCAyLjgzbC0uMDYuMDZBMS42NSAxLjY1IDAgMCAwIDE5LjQgOWExLjY1IDEuNjUgMCAwIDAgMS41MSAxSDIxYTIgMiAwIDAgMSAyIDIgMiAyIDAgMCAxLTIgMmgtLjA5YTEuNjUgMS42NSAwIDAgMC0xLjUxIDF6Ii8+PC9zdmc+" width="22" height="22" style="vertical-align:middle" alt="settings"> Configuration
+## ⚙️ Configuration
 
 ### `capacitor.config.ts`
 
@@ -412,12 +412,12 @@ const config: CapacitorConfig = {
 
 | Variable | Required | Description |
 |---|---|---|
-| `GEMINI_API_KEY` | Yes | Your Google Gemini API key |
+| `GEMINI_API_KEY` | ✅ Yes | Your Google Gemini API key |
 | `APP_URL` | Optional | Base URL of the deployed app |
 
 ### In-App Settings
 
-All settings are configured directly in the app's Settings panel (tap the <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIzIi8+PHBhdGggZD0iTTE5LjQgMTVhMS42NSAxLjY1IDAgMCAwIC4zMyAxLjgybC4wNi4wNmEyIDIgMCAwIDEgMCAyLjgzIDIgMiAwIDAgMS0yLjgzIDBsLS4wNi0uMDZhMS42NSAxLjY1IDAgMCAwLTEuODItLjMzIDEuNjUgMS42NSAwIDAgMC0xIDEuNTFWMjFhMiAyIDAgMCAxLTIgMiAyIDIgMCAwIDEtMi0ydi0uMDlBMS42NSAxLjY1IDAgMCAwIDkgMTkuNGExLjY1IDEuNjUgMCAwIDAtMS44Mi4zM2wtLjA2LjA2YTIgMiAwIDAgMS0yLjgzIDAgMiAyIDAgMCAxIDAtMi44M2wuMDYtLjA2QTEuNjUgMS42NSAwIDAgMCA0LjY4IDE1YTEuNjUgMS42NSAwIDAgMC0xLjUxLTFIM2EyIDIgMCAwIDEtMi0yIDIgMiAwIDAgMSAyLTJoLjA5QTEuNjUgMS42NSAwIDAgMCA0LjYgOWExLjY1IDEuNjUgMCAwIDAtLjMzLTEuODJsLS4wNi0uMDZhMiAyIDAgMCAxIDAtMi44MyAyIDIgMCAwIDEgMi44MyAwbC4wNi4wNkExLjY1IDEuNjUgMCAwIDAgOSA0LjY4YTEuNjUgMS42NSAwIDAgMCAxLTEuNTFWM2EyIDIgMCAwIDEgMi0yIDIgMiAwIDAgMSAyIDJ2LjA5YTEuNjUgMS42NSAwIDAgMCAxIDEuNTEgMS42NSAxLjY1IDAgMCAwIDEuODItLjMzbC4wNi0uMDZhMiAyIDAgMCAxIDIuODMgMCAyIDIgMCAwIDEgMCAyLjgzbC0uMDYuMDZBMS42NSAxLjY1IDAgMCAwIDE5LjQgOWExLjY1IDEuNjUgMCAwIDAgMS41MSAxSDIxYTIgMiAwIDAgMSAyIDIgMiAyIDAgMCAxLTIgMmgtLjA5YTEuNjUgMS42NSAwIDAgMC0xLjUxIDF6Ii8+PC9zdmc+" width="14" height="14" style="vertical-align:middle" alt="settings"> icon):
+All settings are configured directly in the app's Settings panel (tap the ⚙️ icon):
 
 - **General** — Theme, font, font size, language, caret style, user profile
 - **Privacy** — Memory, location metadata, data sharing, network egress
@@ -426,7 +426,7 @@ All settings are configured directly in the app's Settings panel (tap the <img s
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjIgMTlhMiAyIDAgMCAxLTIgMkg0YTIgMiAwIDAgMS0yLTJWNWEyIDIgMCAwIDEgMi0yaDVsMiAzaDlhMiAyIDAgMCAxIDIgMnoiLz48L3N2Zz4=" width="22" height="22" style="vertical-align:middle" alt="folder"> Project Structure
+## 📁 Project Structure
 
 ```
 droid-apk/
@@ -483,11 +483,11 @@ droid-apk/
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWdvbiBwb2ludHM9IjMgNiA5IDMgMTUgNiAyMSAzIDIxIDE4IDE1IDIxIDkgMTggMyAyMSAzIDYiLz48bGluZSB4MT0iOSIgeTE9IjMiIHgyPSI5IiB5Mj0iMTgiLz48bGluZSB4MT0iMTUiIHkxPSI2IiB4Mj0iMTUiIHkyPSIyMSIvPjwvc3ZnPg==" width="22" height="22" style="vertical-align:middle" alt="map"> Future Roadmap
+## 🔮 Future Roadmap
 
 The following features are planned for upcoming versions of Droide. Join the Telegram community to vote on priorities and suggest new ideas.
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNOS41IDJBMi41IDIuNSAwIDAgMSAxMiA0LjV2MTVhMi41IDIuNSAwIDAgMS00Ljk2LS40NiAyLjUgMi41IDAgMCAxLTIuOTYtMy4wOCAzIDMgMCAwIDEtLjM0LTUuNTggMi41IDIuNSAwIDAgMSAxLjMyLTQuMjQgMi41IDIuNSAwIDAgMSAxLjk4LTNBMi41IDIuNSAwIDAgMSA5LjUgMnoiLz48cGF0aCBkPSJNMTQuNSAyQTIuNSAyLjUgMCAwIDAgMTIgNC41djE1YTIuNSAyLjUgMCAwIDAgNC45Ni0uNDYgMi41IDIuNSAwIDAgMCAyLjk2LTMuMDggMyAzIDAgMCAwIC4zNC01LjU4IDIuNSAyLjUgMCAwIDAtMS4zMi00LjI0IDIuNSAyLjUgMCAwIDAtMS45OC0zQTIuNSAyLjUgMCAwIDAgMTQuNSAyeiIvPjwvc3ZnPg==" width="18" height="18" style="vertical-align:middle" alt="brain"> AI & Intelligence
+### 🧠 AI & Intelligence
 - [ ] **Claude / Anthropic support** — Native API integration alongside Gemini
 - [ ] **Local LLM via Ollama** — Fully offline, on-device inference
 - [ ] **Multi-modal reasoning** — Video and audio file analysis in chat
@@ -495,14 +495,14 @@ The following features are planned for upcoming versions of Droide. Join the Tel
 - [ ] **Long-context memory** — RAG-based semantic search over entire chat history
 - [ ] **Scheduled AI tasks** — Set jobs to run at specific times (daily summaries, reminders, etc.)
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSI1IiB5PSIyIiB3aWR0aD0iMTQiIGhlaWdodD0iMjAiIHJ4PSIyIiByeT0iMiIvPjxsaW5lIHgxPSIxMiIgeTE9IjE4IiB4Mj0iMTIuMDEiIHkyPSIxOCIvPjwvc3ZnPg==" width="18" height="18" style="vertical-align:middle" alt="smartphone"> Mobile & Native
+### 📱 Mobile & Native
 - [ ] **iOS IPA support** — Full iOS build via Capacitor
 - [ ] **Android home screen widget** — Quick-chat widget without opening the app
 - [ ] **Push notifications** — Background task completion alerts via FCM
 - [ ] **Biometric lock** — Fingerprint / face authentication gate
 - [ ] **Offline queue** — Queue messages when offline, auto-send on reconnect
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjEgMTVhMiAyIDAgMCAxLTIgMkg3bC00IDRWNWEyIDIgMCAwIDEgMi0yaDE0YTIgMiAwIDAgMSAyIDJ6Ii8+PC9zdmc+" width="18" height="18" style="vertical-align:middle" alt="message"> Chat & UX
+### 💬 Chat & UX
 - [ ] **Full PDF export** — Export conversation as a formatted PDF document
 - [ ] **Voice responses (TTS)** — Text-to-speech playback of AI replies
 - [ ] **Conversation branching** — Fork from any message to explore alternate paths
@@ -511,7 +511,7 @@ The following features are planned for upcoming versions of Droide. Join the Tel
 - [ ] **Real-time collaboration** — Share a live session link with another person
 - [ ] **Message reactions** — React to messages with emoji
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJ2LTUiLz48cGF0aCBkPSJNOSA4VjIiLz48cGF0aCBkPSJNMTUgOFYyIi8+PHBhdGggZD0iTTE4IDh2NWE0IDQgMCAwIDEtNCA0aC00YTQgNCAwIDAgMS00LTRWOHoiLz48L3N2Zz4=" width="18" height="18" style="vertical-align:middle" alt="plug"> Integrations
+### 🔌 Integrations
 - [ ] **Google Drive** — Read and write files from Drive
 - [ ] **Notion** — Read and update pages and databases
 - [ ] **GitHub** — Browse repos, create issues, review PRs via chat
@@ -519,20 +519,20 @@ The following features are planned for upcoming versions of Droide. Join the Tel
 - [ ] **Gmail** — Read and compose email via the AI
 - [ ] **Custom webhook tools** — Define custom HTTP tools the AI can call
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMy41IiBjeT0iNi41IiByPSIuNSIgZmlsbD0iIzdjM2FlZCIgc3Ryb2tlPSIjN2MzYWVkIi8+PGNpcmNsZSBjeD0iMTcuNSIgY3k9IjEwLjUiIHI9Ii41IiBmaWxsPSIjN2MzYWVkIiBzdHJva2U9IiM3YzNhZWQiLz48Y2lyY2xlIGN4PSI4LjUiIGN5PSI3LjUiIHI9Ii41IiBmaWxsPSIjN2MzYWVkIiBzdHJva2U9IiM3YzNhZWQiLz48Y2lyY2xlIGN4PSI2LjUiIGN5PSIxMi41IiByPSIuNSIgZmlsbD0iIzdjM2FlZCIgc3Ryb2tlPSIjN2MzYWVkIi8+PHBhdGggZD0iTTEyIDJDNi41IDIgMiA2LjUgMiAxMnM0LjUgMTAgMTAgMTBjLjkyNiAwIDEuNjQ4LS43NDYgMS42NDgtMS42ODggMC0uNDM3LS4xOC0uODM1LS40MzctMS4xMjUtLjI5LS4yODktLjQzOC0uNjUyLS40MzgtMS4xMjVhMS42NCAxLjY0IDAgMCAxIDEuNjY4LTEuNjY4aDEuOTk2YzMuMDUxIDAgNS41NTUtMi41MDMgNS41NTUtNS41NTRDMjEuOTY1IDYuMDEyIDE3LjQ2MSAyIDEyIDJ6Ii8+PC9zdmc+" width="18" height="18" style="vertical-align:middle" alt="palette"> Customization
+### 🎨 Customization
 - [ ] **Theme editor** — Build and share custom color themes
 - [ ] **Custom launcher icon** — Replace the default app icon
 - [ ] **Plugin SDK** — Public SDK for third-party Droide plugins
 - [ ] **Layout modes** — Compact, comfortable, and spacious message density options
 
-### <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIzIiB5PSIxMSIgd2lkdGg9IjE4IiBoZWlnaHQ9IjExIiByeD0iMiIgcnk9IjIiLz48cGF0aCBkPSJNNyAxMVY3YTUgNSAwIDAgMSAxMCAwdjQiLz48L3N2Zz4=" width="18" height="18" style="vertical-align:middle" alt="lock"> Security & Privacy
+### 🔒 Security & Privacy
 - [ ] **At-rest encryption** — Encrypt all locally stored data
 - [ ] **Self-hosted server** — Deploy your own Droide backend for full control
 - [ ] **API key vault** — Secure encrypted keychain storage for provider keys
 
 ---
 
-## <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxsaW5lIHgxPSIyIiB5MT0iMTIiIHgyPSIyMiIgeTI9IjEyIi8+PHBhdGggZD0iTTEyIDJhMTUuMyAxNS4zIDAgMCAxIDQgMTAgMTUuMyAxNS4zIDAgMCAxLTQgMTAgMTUuMyAxNS4zIDAgMCAxLTQtMTAgMTUuMyAxNS4zIDAgMCAxIDQtMTB6Ii8+PC9zdmc+" width="22" height="22" style="vertical-align:middle" alt="globe"> Community & Updates
+## 🌐 Community & Updates
 
 Stay up to date with new features, beta APK releases, bug fixes, and community discussion:
 
@@ -551,7 +551,7 @@ Get early APK releases, report bugs, suggest features, and connect with other Dr
 
 ---
 
-## License
+## 📄 License
 
 This project is licensed under the **MIT License**.
 
@@ -559,6 +559,6 @@ This project is licensed under the **MIT License**.
 
 <div align="center">
 
-Made with <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM3YzNhZWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjAuODQgNC42MWE1LjUgNS41IDAgMCAwLTcuNzggMEwxMiA1LjY3bC0xLjA2LTEuMDZhNS41IDUuNSAwIDAgMC03Ljc4IDcuNzhsMS4wNiAxLjA2TDEyIDIxLjIzbDcuNzgtNy43OCAxLjA2LTEuMDZhNS41IDUuNSAwIDAgMCAwLTcuNzh6IiBmaWxsPSIjN2MzYWVkIiBzdHJva2U9IiM3YzNhZWQiLz48L3N2Zz4=" width="14" height="14" style="vertical-align:middle" alt="heart"> by the Droide team &nbsp;·&nbsp; **[Telegram @DZDEV25](https://t.me/DZDEV25)**
+Made with ❤️ by the Droide team · **[Telegram @DZDEV25](https://t.me/DZDEV25)**
 
 </div>
