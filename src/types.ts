@@ -26,7 +26,6 @@ export type AppSettings = {
   selectedModelId: string;
   forceBengali: boolean;
   streamResponses: boolean;
-  autoTts: boolean;
   adaptiveThinking: boolean;
   temperature: number;
   topP: number;
@@ -52,7 +51,6 @@ export type AppSettings = {
   chatFont: string;
   chatFontSize?: number;
   caretStyle?: 'bar' | 'underscore' | 'block' | 'dot' | 'slash';
-  voice: string;
   locationMetadata: boolean;
   improveDroide?: boolean;
   discoveryEnabled: boolean;

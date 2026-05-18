@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Droide",
+  "description": "Modern & Professional AI Assistant with advanced thinking and native mobile-first design.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

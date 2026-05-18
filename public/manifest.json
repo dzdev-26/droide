@@ -1,16 +1,17 @@
 {
-  "name": "Droid AI Mobile",
-  "short_name": "Droid",
-  "start_url": ".",
+  "name": "Droide AI",
+  "short_name": "Droide",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
-  "description": "Droid AI Assistant with native Android app design",
+  "background_color": "#f3ebd8",
+  "theme_color": "#d97757",
+  "description": "Professional AI Assistant with advanced thinking and native mobile-first design.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64",
-      "type": "image/x-icon"
+      "src": "icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ],
   "orientation": "portrait"

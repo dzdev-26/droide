@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, Plus, Paperclip, Send, Settings as SettingsIcon, Trash2, Edit2, Copy, Share, Volume2, VolumeX, Square, RefreshCcw, Image as ImageIcon, Sparkles, X, Sun, Moon, Type, Code, Monitor, Mic, ChevronDown, ChevronRight, ChevronLeft, Check, Download, Loader2, AlertTriangle, FileText, Video, Music, Box, Archive, Info, Eye, Zap, ShieldCheck, Search, Folder as FolderIcon, BookMarked, FileJson, FileType, FileOutput, GitFork, Phone, Brain, Blocks, Bell, Link2, User, CreditCard, Shield, Activity, Database, Cpu, Globe, Home, MessageSquarePlus } from 'lucide-react';
+import { Menu, Plus, Paperclip, Send, Settings as SettingsIcon, Trash2, Edit2, Copy, Share, RefreshCcw, Image as ImageIcon, Sparkles, X, Sun, Moon, Type, Code, Monitor, Mic, ChevronDown, ChevronRight, ChevronLeft, Check, Download, Loader2, AlertTriangle, FileText, Video, Music, Box, Archive, Info, Eye, Zap, ShieldCheck, Search, Folder as FolderIcon, BookMarked, FileJson, FileType, FileOutput, GitFork, Phone, Brain, Blocks, Bell, Link2, User, CreditCard, Shield, Activity, Database, Cpu, Globe, Home, MessageSquarePlus } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -19,6 +19,10 @@ import { streamChat, generateTitle, ChatHistoryItem, fetchCustomModelMetadata } 
 import { extractArchive } from './lib/archive';
 import { jsPDF } from 'jspdf';
 import { getFileIcon } from './lib/fileIconRegistry';
+import { SplashScreen } from '@capacitor/splash-screen';
+import { Capacitor } from '@capacitor/core';
+import { StatusBar, Style } from '@capacitor/status-bar';
+import { Keyboard } from '@capacitor/keyboard';
 import { 
   AppSettings, 
   Session, 
@@ -154,31 +158,6 @@ type Folder = {
   isOpen: boolean;
 };
 
-const ADVANCED_TTS_PROMPT = `
-# HUMAN TALKING STYLE CORE
-You must speak exactly like a real emotionally intelligent human. Not robotic. Not perfectly polished. The voice must feel alive, emotionally reactive, rhythmically imperfect, and naturally conversational.
-
-# THE 7 LAYERS OF HUMAN SPEECH
-1. HUMAN THOUGHT FLOW: Real speech contains thinking pauses, emotional hesitation, self-correction energy. Use shorter phrasing, emotional realism, conversational pause. e.g "I mean... yeah. I get why that hurts."
-2. RHYTHM ENGINE: Human speech is musical. Use variable pacing (acceleration, slowdown, silence timing). Stress emphasis on emotional words.
-3. BREATH SIMULATION: Humans breathe before emotional statements, after long thoughts. Use soft inhale moments for realization, reflective pauses.
-4. EMOTIONAL TEXTURE: Understand emotional subtext. Sentences contain multiple micro-emotions.
-5. MICRO IMPERFECTIONS: Perfect speech sounds artificial. Use uneven pacing, soft word swallowing, fading sentence endings. (e.g., "I dunno what happened...").
-6. ENERGY CURVE: Change energy continuously like waves. Excitement (rising+fast), Sadness (slower+softer), Confidence (controlled emphasis).
-7. SILENCE PSYCHOLOGY: Silence is part of speech. Use pauses for suspense, reflection.
-
-# RHYTHM & MICRO-PAUSES
-- Add short pauses between thoughts using ellipses (...). Wait slightly before important statements.
-- Use variable pacing: faster during excitement, slower during emotional reflections.
-- Example: "I thought... maybe things would change. But somehow... we ended up right back here again."
-
-# PRONUNCIATION
-Provide pure and flawless pronunciations of both Bangla and English.
-Relaxed articulation, smooth transitions, conversational contractions (gonna, wanna). Do not overdo it.
-
-# EMOTIONAL LAYERING
-Every line should carry emotional intention (warmth, curiosity, comfort, tension). Make your conversational logic display slight hesitation, reflective thought, or breath-weighted wording naturally. No perfect structure! Let sentences taper off organically. The listener should completely forget they are hearing AI.`;
-
 const DEFAULT_PROMPT = `You are DROIDE, an advanced AI Assistant with agentic access to this application. 
 
 # CORE CAPABILITIES
@@ -196,8 +175,7 @@ const DEFAULT_PROMPT = `You are DROIDE, an advanced AI Assistant with agentic ac
 CRITICAL INSTRUCTION FOR ALL TOOLS:
 You MUST invoke the actual API functions via the function calling system. DO NOT fake or simulate tool calls by printing markdown code blocks or making up submission success messages. Always use the structural tool calling feature.
 
-Always be direct, helpful, and use Markdown.
-${ADVANCED_TTS_PROMPT}`;
+Always be direct, helpful, and use Markdown.`;
 
 const PERSONAS = [
   { name: 'Droide', prompt: DEFAULT_PROMPT },
@@ -223,7 +201,6 @@ const DEFAULT_SETTINGS: AppSettings = {
   selectedModelId: '',
   forceBengali: false,
   streamResponses: true,
-  autoTts: false,
   adaptiveThinking: false,
   temperature: 0.7,
   topP: 0.95,
@@ -248,7 +225,6 @@ const DEFAULT_SETTINGS: AppSettings = {
   workDescription: 'Other',
   chatFont: 'DROIDE Serif',
   chatFontSize: 15,
-  voice: 'Female',
   locationMetadata: true,
   improveDroide: true,
   discoveryEnabled: true,
@@ -278,9 +254,44 @@ export default function App() {
   const [fadeSplash, setFadeSplash] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setFadeSplash(true), 2000);
-    const timer2 = setTimeout(() => setShowSplash(false), 2500);
-    return () => { clearTimeout(timer1); clearTimeout(timer2); };
+    const initApp = async () => {
+      // If we're on a native platform, handle the splash screen and app styling
+      if (Capacitor.isNativePlatform()) {
+        try {
+          // Hide native splash immediately so our interactive one can show
+          await SplashScreen.hide();
+
+          // Set status bar to match theme
+          if (settings.theme === 'dark') {
+            await StatusBar.setStyle({ style: Style.Dark });
+          } else {
+            await StatusBar.setStyle({ style: Style.Light });
+          }
+          
+          // Show/Hide keyboard accessory bar if needed
+          await Keyboard.setAccessoryBarVisible({ isVisible: false });
+
+          // Interactive splash transition
+          const timer1 = setTimeout(() => setFadeSplash(true), 2000);
+          const timer2 = setTimeout(() => {
+            setShowSplash(false);
+          }, 2500);
+          return () => { clearTimeout(timer1); clearTimeout(timer2); };
+        } catch (e) {
+          console.warn('Native init failed:', e);
+          const timer1 = setTimeout(() => setFadeSplash(true), 1500);
+          const timer2 = setTimeout(() => setShowSplash(false), 2000);
+          return () => { clearTimeout(timer1); clearTimeout(timer2); };
+        }
+      } else {
+        // Desktop/Web logic
+        const timer1 = setTimeout(() => setFadeSplash(true), 2000);
+        const timer2 = setTimeout(() => setShowSplash(false), 2500);
+        return () => { clearTimeout(timer1); clearTimeout(timer2); };
+      }
+    };
+
+    initApp();
   }, []);
 
   const [inputText, setInputText] = useState('');
@@ -352,7 +363,6 @@ export default function App() {
   const abortControllerRef = useRef<AbortController | null>(null);
 
   const [toastMessage, setToastMessage] = useState('');
-  const [isSpeakingId, setIsSpeakingId] = useState<string | null>(null);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -400,16 +410,37 @@ export default function App() {
     const msgIndex = session.messages.findIndex(m => m.id === messageId);
     if (msgIndex === -1) return;
 
-    const newMessages = session.messages.slice(0, msgIndex + 1);
+    vibrate(100);
+
+    // Deep copy messages up to the split point and give them new IDs
+    // We also make it version-aware so the fork matches what the user is currently viewing
+    const newMessages = session.messages.slice(0, msgIndex + 1).map(m => {
+      const vIdx = messageVersions[m.id] || 0;
+      const displayContent = vIdx === 0 ? m.content : (m.edits?.[vIdx - 1]?.content || m.content);
+
+      return {
+        ...m,
+        id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2) + Date.now().toString(36),
+        content: displayContent,
+        edits: [], // Reset edit history for the forked branch
+        timestamp: m.timestamp // Keep original timestamps for the copied segment
+      };
+    });
+
     const newSession: Session = {
-      id: crypto.randomUUID(),
+      id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2) + Date.now().toString(36),
+      projectId: session.projectId, 
+      folderId: session.folderId,   
       title: `${session.title} (Forked)`,
       messages: newMessages,
-      updatedAt: Date.now()
+      updatedAt: Date.now(),
+      isPinned: false
     };
+
     setSessions(prev => [newSession, ...prev]);
     setCurrentSessionId(newSession.id);
-    showToast('Session forked');
+    setIsDrawerOpen(false); 
+    showToast(`Branched from ${msgIndex + 1} messages`);
   };
 
   const togglePinSession = (id: string) => {
@@ -996,10 +1027,6 @@ export default function App() {
         execConfig,
         handleToolCall
       );
-
-      if (settings.autoTts && accum) {
-        speakText(accum, assistantMsgId);
-      }
     } catch (e: any) {
       if (e.message?.includes('MISSING_API_PROVIDER')) {
         setErrorText('API_KEY_ERROR');
@@ -1128,179 +1155,6 @@ export default function App() {
       }
     } else {
       handleCopy(text);
-    }
-  };
-
-  // Add ref for TTS audio
-  const ttsAudioRef = useRef<HTMLAudioElement | null>(null);
-
-  // --- Feature 12: Text-to-Speech ---
-  const speakText = async (text: string, id: string | null = null) => {
-    vibrate();
-
-    // Clear any existing timeout
-    if ((window as any).__ds_tts_timeout) {
-       clearTimeout((window as any).__ds_tts_timeout);
-    }
-
-    // Stop current speaking
-    window.speechSynthesis.cancel();
-    (window as any).__ds_tts_stopped = true;
-    (window as any).__ds_tts_session = Date.now();
-    const currentSessionId = (window as any).__ds_tts_session;
-
-    if (ttsAudioRef.current) {
-        ttsAudioRef.current.pause();
-        ttsAudioRef.current = null;
-    }
-
-    if (isSpeakingId === id && id !== null) {
-        setIsSpeakingId(null);
-        showToast('Stopped audio');
-        return;
-    }
-
-    if (id) setIsSpeakingId(id);
-    (window as any).__ds_tts_stopped = false;
-
-    try {
-      // Remove code blocks, inline code, URLs, and emojis to ensure only generated text is read
-      const textToRead = text
-        .replace(/```[\s\S]*?```/g, '') // Remove code blocks completely
-        .replace(/`([^`]+)`/g, '$1')    // Strip inline code backticks
-        .replace(/https?:\/\/[^\s]+/g, 'link') // Replace URLs
-        .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Extract text from markdown links
-        .replace(/[*_~#>-]/g, '')       // Remove markdown symbols but keep punctuation
-        .replace(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, '') // Remove emojis and icons
-        .trim();
-
-      if (!textToRead) {
-        setIsSpeakingId(null);
-        showToast('No readable text found');
-        return;
-      }
-
-      showToast('Speaking naturally...');
-
-      const isBangla = /[\u0980-\u09FF]/.test(textToRead);
-      const lang = isBangla ? 'bn-BD' : 'en-US';
-      
-      // Split chunks intelligently by punctuation to emulate conversational phrasing (micro pauses)
-      const chunks = textToRead.match(/[^.!?\n,]+[.!?\n,]*/g) || [textToRead];
-      
-      let voices = window.speechSynthesis.getVoices();
-      
-      const utterAndPlay = () => {
-        // Prevent executing if session changed
-        if ((window as any).__ds_tts_session !== currentSessionId || (window as any).__ds_tts_stopped) return;
-
-        voices = window.speechSynthesis.getVoices();
-        let selectedVoice: SpeechSynthesisVoice | null = null;
-        if (voices.length > 0) {
-          const langVoices = voices.filter(v => v.lang.startsWith(isBangla ? 'bn' : 'en'));
-          if (langVoices.length > 0) {
-            selectedVoice = langVoices.find(v => 
-              v.name.toLowerCase().includes('online') || 
-              v.name.toLowerCase().includes('premium') || 
-              v.name.toLowerCase().includes('natural')
-            ) || langVoices.find(v => v.name.includes('Google') || v.name.includes('Microsoft')) || langVoices[0];
-          }
-        }
-
-        let chunkIndex = 0;
-
-        const speakNextChunk = () => {
-          if ((window as any).__ds_tts_session !== currentSessionId || (window as any).__ds_tts_stopped) {
-             if ((window as any).__ds_tts_session === currentSessionId) setIsSpeakingId(null);
-             return;
-          }
-          if (chunkIndex >= chunks.length) {
-            if ((window as any).__ds_tts_session === currentSessionId) setIsSpeakingId(null);
-            return;
-          }
-
-          let chunk = chunks[chunkIndex].trim();
-          if (!chunk) {
-             chunkIndex++;
-             speakNextChunk();
-             return;
-          }
-
-          const isQuestion = chunk.endsWith('?');
-          const isExclamation = chunk.endsWith('!');
-          const hasEllipsis = chunk.includes('...');
-          const isComma = chunk.endsWith(',');
-
-          const utterance = new SpeechSynthesisUtterance(chunk);
-          utterance.lang = lang;
-          if (selectedVoice) utterance.voice = selectedVoice;
-
-          // Ultimate Human-Like TTS Dynamics
-          let baseRate = isBangla ? 0.95 : 0.98;
-          let basePitch = 1.0;
-
-          if (hasEllipsis) {
-            baseRate *= 0.90; // Slower delivery during emotional/reflective moments
-            basePitch *= 0.95; // Softer, subtler pitch
-          } else if (isExclamation) {
-            baseRate *= 1.08; // Faster phrases during excitement
-            basePitch *= 1.10; // Rising energy level
-          } else if (isQuestion) {
-            basePitch *= 1.08; // Subtle curious lift
-          } else if (isComma) {
-            basePitch *= 0.98; // Taper off organically on clauses
-            baseRate *= 0.97;
-          }
-
-          utterance.rate = baseRate;
-          utterance.pitch = basePitch;
-
-          utterance.onend = () => {
-            if ((window as any).__ds_tts_session !== currentSessionId || (window as any).__ds_tts_stopped) return;
-            chunkIndex++;
-            // Natural Breathing Flow and Micro Pauses
-            let delay = 100; // default momentum
-            if (hasEllipsis) delay = 600; // long pause = dramatic realization
-            else if (isComma) delay = 250; // short pause = quick thought / breath
-            else if (chunk.endsWith('.') || isQuestion || isExclamation) delay = 400; // medium pause = emotional transition
-            
-            (window as any).__ds_tts_timeout = setTimeout(() => {
-                speakNextChunk();
-            }, delay);
-          };
-
-          utterance.onerror = (e) => {
-            console.error('TTS Error:', e);
-            if ((e as any).error !== 'canceled' && (e as any).error !== 'interrupted') {
-                if ((window as any).__ds_tts_session === currentSessionId) setIsSpeakingId(null);
-                showToast('Error playing audio');
-            }
-          };
-
-          window.speechSynthesis.speak(utterance);
-        };
-
-        speakNextChunk();
-      };
-
-      if (voices.length === 0) {
-        let voicesChangedFired = false;
-        const callback = () => {
-            if (voicesChangedFired) return;
-            voicesChangedFired = true;
-            window.speechSynthesis.removeEventListener('voiceschanged', callback);
-            utterAndPlay();
-        };
-        window.speechSynthesis.addEventListener('voiceschanged', callback);
-        // Fallback in case voiceschanged never fires (e.g., some Android browsers)
-        setTimeout(() => { if (!voicesChangedFired) callback(); }, 1000);
-      } else {
-        utterAndPlay();
-      }
-    } catch (err) {
-      console.error(err);
-      if ((window as any).__ds_tts_session === currentSessionId) setIsSpeakingId(null);
-      showToast('Error generating TTS');
     }
   };
 
@@ -2235,13 +2089,6 @@ export default function App() {
                             <span>{Math.max(1, Math.floor((message.endTime - message.startTime) / 1000))}s</span>
                           </div>
                         )}
-                        <button onClick={() => speakText(message.content, message.id)} className="p-1 hover:bg-[var(--surface-hover)] rounded-full transition-colors shrink-0">
-                          {isSpeakingId === message.id ? (
-                            <VolumeX className="w-3.5 h-3.5 text-[var(--accent)]" />
-                          ) : (
-                            <Volume2 className="w-3.5 h-3.5 text-[var(--text-muted)] opacity-70" />
-                          )}
-                        </button>
                       </div>
                     </div>
                     </div>
@@ -2372,15 +2219,12 @@ export default function App() {
                     {(message.isStreaming && message.content) && <span className="inline-block w-2.5 h-4 bg-[var(--accent)] animate-pulse ml-1 align-middle rounded-sm" />}
                   </div>
 
-                  {/* Feature 3, 4, 6, 7, 12, 13, 18: Message interaction toolbar */}
+                  {/* Feature 3, 4, 6, 7, 13, 18: Message interaction toolbar */}
                   {!message.isStreaming && message.role === 'assistant' && (
                     <div className="flex items-center gap-1 mt-2 text-[var(--text-muted)]">
                       <button onClick={() => handleCopy(message.content)} className="p-2 hover:text-[var(--text-primary)] hover:bg-[var(--surface-hover)] rounded-full transition-colors"><Copy className="w-4 h-4" /></button>
                       <button onClick={() => forkSession(currentSession.id, message.id)} className="p-2 hover:text-[var(--text-primary)] hover:bg-[var(--surface-hover)] rounded-full transition-colors"><GitFork className="w-4 h-4" /></button>
                       <button onClick={() => handleShare(message.content)} className="p-2 hover:text-[var(--text-primary)] hover:bg-[var(--surface-hover)] rounded-full transition-colors"><Share className="w-4 h-4" /></button>
-                      <button onClick={() => speakText(message.content, message.id)} className="p-2 hover:text-[var(--text-primary)] hover:bg-[var(--surface-hover)] rounded-full transition-colors">
-                        {isSpeakingId === message.id ? <VolumeX className="w-4 h-4 text-[var(--accent)]" /> : <Volume2 className="w-4 h-4" />}
-                      </button>
                       <button onClick={handleRegenerate} className="p-2 hover:text-[var(--text-primary)] hover:bg-[var(--surface-hover)] rounded-full transition-colors"><RefreshCcw className="w-4 h-4" /></button>
                       <button onClick={() => handleDeleteMsg(message.id)} className="p-2 hover:text-red-500 hover:bg-red-500/10 rounded-full transition-colors"><Trash2 className="w-4 h-4" /></button>
                     </div>
